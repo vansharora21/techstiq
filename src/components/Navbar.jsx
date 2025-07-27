@@ -1,370 +1,660 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "./logo.png";
+import logo from "./techstiq_logo.jpeg";
 
-// Drop-down data
+// Drop-down data (keeping the same as your current setup)
 const PRODUCT_SERVICES = [
-  { name: "Marketing Hub", desc: "Marketing automation software", path: "/products/marketing-hub" },
-  { name: "Sales Hub", desc: "Sales software", path: "/products/sales-hub" },
-  { name: "Service Hub", desc: "Customer service software", path: "/products/service-hub" },
-  { name: "Operations Hub", desc: "Operations software", path: "/products/operations-hub" },
+  { name: "Custom Software", desc: "Tailored solutions for your business", path: "/products/custom-software" },
+  { name: "Web Development", desc: "Modern web applications", path: "/products/web-development" },
+  { name: "Mobile Apps", desc: "iOS and Android development", path: "/products/mobile-apps" },
+  { name: "UI/UX Design", desc: "User-centered design solutions", path: "/products/ui-ux-design" },
 ];
+
 const SOLUTIONS = [
-  { name: "Small Business", desc: "Growth solutions for small teams", path: "/solutions/small-business" },
-  { name: "Enterprise", desc: "Scalable tools for enterprises", path: "/solutions/enterprise" },
-  { name: "Startups", desc: "Get started quickly and affordably", path: "/solutions/startups" },
+  { name: "Small Business", desc: "Growth solutions for small teams", path: "/solutions/small-business" },
+  { name: "Enterprise", desc: "Scalable tools for enterprises", path: "/solutions/enterprise" },
+  { name: "Startups", desc: "Get started quickly and affordably", path: "/solutions/startups" },
 ];
+
 const RESOURCES = [
-  { name: "Blog", desc: "Insights and best practices", path: "/resources/blog" },
-  { name: "Ebooks", desc: "Downloadable guides", path: "/resources/ebooks" },
-  { name: "Case Studies", desc: "Real customer results", path: "/resources/case-studies" },
+  { name: "Blog", desc: "Insights and best practices", path: "/resources/blog" },
+  { name: "Case Studies", desc: "Real customer results", path: "/resources/case-studies" },
+  { name: "Documentation", desc: "Technical guides", path: "/resources/documentation" },
 ];
 
-// Icons
+// Icons (same as before)
 const HamburgerIcon = ({ color = "#fff" }) => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <rect y="5" width="24" height="2" rx="1" fill={color}/>
-    <rect y="11" width="24" height="2" rx="1" fill={color}/>
-    <rect y="17" width="24" height="2" rx="1" fill={color}/>
-  </svg>
-);
-const CloseIcon = ({ color = "#fff" }) => (
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-    <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-    <line x1="6" y1="18" x2="18" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-  </svg>
-);
-const ChevronDownIcon = ({ color = "#fff" }) => (
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-    <path d="M7 10l5 5 5-5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-  </svg>
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <rect y="5" width="24" height="2" rx="1" fill={color}/>
+    <rect y="11" width="24" height="2" rx="1" fill={color}/>
+    <rect y="17" width="24" height="2" rx="1" fill={color}/>
+  </svg>
 );
 
-// Mobile dropdown helper
+const CloseIcon = ({ color = "#fff" }) => (
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+    <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    <line x1="6" y1="18" x2="18" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+  </svg>
+);
+
+const ChevronDownIcon = ({ color = "#fff" }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+    <path d="M7 10l5 5 5-5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+// Mobile dropdown helper (same as before)
 function DropdownMobile({ label, open, onClick, items, closeMenu }) {
-  return (
-    <div style={{ width: "100%" }}>
-      <button style={dropdownBtnStyle} onClick={onClick}>
-        {label} <ChevronDownIcon />
-      </button>
-      {open && (
-        <div style={dropdownMenuMobileStyle}>
-          {items.map((item) => (
-            <Link to={item.path} style={dropdownItemStyleMobile} key={item.name} onClick={closeMenu}>
-              <div style={{ fontWeight: 600, fontSize: 15 }}>{item.name}</div>
-              <div style={{ fontSize: 12, color: "#666", marginTop: 1 }}>{item.desc}</div>
-            </Link>
-          ))}
-        </div>
-      )}
-    </div>
-  );
+  return (
+    <div style={{ width: "100%" }}>
+      <button style={dropdownBtnMobileStyle} onClick={onClick}>
+        <span>{label}</span>
+        <div style={{ 
+          transform: open ? 'rotate(180deg)' : 'rotate(0deg)', 
+          transition: 'transform 0.2s ease' 
+        }}>
+          <ChevronDownIcon />
+        </div>
+      </button>
+      <div style={{
+        maxHeight: open ? '400px' : '0',
+        overflow: 'hidden',
+        transition: 'max-height 0.3s ease-in-out'
+      }}>
+        <div style={dropdownMenuMobileStyle}>
+          {items.map((item) => (
+            <Link to={item.path} style={dropdownItemStyleMobile} key={item.name} onClick={closeMenu}>
+              <div style={{ fontWeight: 600, fontSize: 15 }}>{item.name}</div>
+              <div style={{ fontSize: 12, color: "#666", marginTop: 2 }}>{item.desc}</div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 }
 
-// --- Navbar Component ---
+// Main Navbar Component
 const Navbar = () => {
-  const [mobileMenu, setMobileMenu] = useState(false);
-  const [openDropdown, setOpenDropdown] = useState(null);
+  const [mobileMenu, setMobileMenu] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState(null);
+  const [isScrolled, setIsScrolled] = useState(false);
 
-  const navStyle = {
-    background: "#0070AD",
-    fontFamily: "'Lexend Deca', Segoe UI, Arial, sans-serif",
-    boxShadow: "0 1px 0 0 #005680",
-    color: "#fff",
-    minHeight: 60
-  };
+  // Handle scroll effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-  // Hide mobile menu
-  const closeMobileMenu = () => {
-    setMobileMenu(false);
-    setOpenDropdown(null);
-  };
+  // Close mobile menu on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth >= 1024) {
+        setMobileMenu(false);
+        setOpenDropdown(null);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
-  return (
-    <header style={navStyle} className="navbar-main">
-      <nav className="container" style={{
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "12px 24px",
-        flexWrap: "wrap",
-        position: "relative"
-      }}>
-        {/* LEFT: Logo + Links */}
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {/* Logo */}
-          <Link to="/" className="logo" style={{ display: "flex", alignItems: "center", height: 32 }}>
-            <img src={logo} alt="Logo" style={{ height: 32, filter: "brightness(0) invert(1)" }}/>
-          </Link>
-          {/* Desktop Nav */}
-          <ul className="nav-links" style={{
-            display: "flex",
-            alignItems: "center",
-            gap: 24,
-            marginLeft: 36,
-            listStyle: "none"
-          }}>
-            {/* Products dropdown */}
-            <li className="nav-dropdown desktop-only" style={{ position: "relative" }}
-                onMouseEnter={() => setOpenDropdown("products")}
-                onMouseLeave={() => setOpenDropdown(null)}
-            >
-              <button type="button" style={dropdownBtnStyle}>
-                Products <ChevronDownIcon />
-              </button>
-              {openDropdown === "products" && (
-                <div style={dropdownMenuStyle}>
-                  {PRODUCT_SERVICES.map((srv) => (
-                    <Link to={srv.path} key={srv.name} style={dropdownItemStyle}>
-                      <div style={{ fontWeight: 600, fontSize: 16 }}>{srv.name}</div>
-                      <div style={{ fontSize: 13, color: "#666", marginTop: 2 }}>{srv.desc}</div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </li>
-            {/* Solutions dropdown */}
-            <li className="nav-dropdown desktop-only" style={{ position: "relative" }}
-                onMouseEnter={() => setOpenDropdown("solutions")}
-                onMouseLeave={() => setOpenDropdown(null)}
-            >
-              <button type="button" style={dropdownBtnStyle}>
-                Solutions <ChevronDownIcon />
-              </button>
-              {openDropdown === "solutions" && (
-                <div style={dropdownMenuStyle}>
-                  {SOLUTIONS.map((sol) => (
-                    <Link to={sol.path} key={sol.name} style={dropdownItemStyle}>
-                      <div style={{ fontWeight: 600, fontSize: 16 }}>{sol.name}</div>
-                      <div style={{ fontSize: 13, color: "#666", marginTop: 2 }}>{sol.desc}</div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </li>
-            {/* Pricing */}
-            <li className="desktop-only">
-              <Link to="/pricing" style={navLinkStyle}>Pricing</Link>
-            </li>
-            {/* Resources dropdown */}
-            <li className="nav-dropdown desktop-only" style={{ position: "relative" }}
-                onMouseEnter={() => setOpenDropdown("resources")}
-                onMouseLeave={() => setOpenDropdown(null)}
-            >
-              <button type="button" style={dropdownBtnStyle}>
-                Resources <ChevronDownIcon />
-              </button>
-              {openDropdown === "resources" && (
-                <div style={dropdownMenuStyle}>
-                  {RESOURCES.map((res) => (
-                    <Link to={res.path} key={res.name} style={dropdownItemStyle}>
-                      <div style={{ fontWeight: 600, fontSize: 16 }}>{res.name}</div>
-                      <div style={{ fontSize: 13, color: "#666", marginTop: 2 }}>{res.desc}</div>
-                    </Link>
-                  ))}
-                </div>
-              )}
-            </li>
-          </ul>
-        </div>
-        {/* RIGHT: CTA and Hamburger */}
-        <div style={{ display: "flex", alignItems: "center" }}>
-          {/* CTA */}
-          <Link to="/get-free-crm" className="desktop-only"
-            style={{
-              background: "#ff642f",
-              color: "#fff",
-              borderRadius: 8,
-              padding: "8px 22px",
-              marginLeft: 28,
-              fontSize: 15,
-              fontWeight: 600,
-              textDecoration: "none",
-              letterSpacing: 0.1,
-              boxShadow: "0 2px 4px 0 rgba(0,0,0,0.08)"
-            }}>
-          </Link>
-          {/* Hamburger for Mobile */}
-          <button className="mobile-only"
-            aria-label="Toggle menu"
-            onClick={() => setMobileMenu(m => !m)}
-            style={{
-              display: "none",  // Shown via CSS below
-              background: "transparent",
-              border: 0,
-              marginLeft: 20,
-              cursor: "pointer"
-            }}
-          >
-            {mobileMenu ? <CloseIcon /> : <HamburgerIcon />}
-          </button>
-        </div>
-      </nav>
-      {/* Mobile Slide Nav */}
-      {mobileMenu && (
-        <div className="mobile-nav-menu" style={mobileNavMenuStyle}>
-          <nav style={{ width: "100%" }}>
-            <ul style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              margin: 0,
-              padding: 0,
-              listStyle: "none"
-            }}>
-              {/* Dropdowns as toggles */}
-              <li style={{ width: "100%", marginTop: 12 }}>
-                <DropdownMobile
-                  label="Products"
-                  open={openDropdown === "products"}
-                  onClick={() => setOpenDropdown(openDropdown === "products" ? null : "products")}
-                  items={PRODUCT_SERVICES}
-                  closeMenu={closeMobileMenu}
-                />
-              </li>
-              <li style={{ width: "100%", marginTop: 12 }}>
-                <DropdownMobile
-                  label="Solutions"
-                  open={openDropdown === "solutions"}
-                  onClick={() => setOpenDropdown(openDropdown === "solutions" ? null : "solutions")}
-                  items={SOLUTIONS}
-                  closeMenu={closeMobileMenu}
-                />
-              </li>
-              <li style={{ width: "100%", marginTop: 12 }}>
-                <DropdownMobile
-                  label="Resources"
-                  open={openDropdown === "resources"}
-                  onClick={() => setOpenDropdown(openDropdown === "resources" ? null : "resources")}
-                  items={RESOURCES}
-                  closeMenu={closeMobileMenu}
-                />
-              </li>
-              <li style={{ width: "100%", marginTop: 12 }}>
-                <Link to="/pricing" style={mobileLinkStyle} onClick={closeMobileMenu}>Pricing</Link>
-              </li>
-              {/* Mobile CTA */}
-              <li style={{ width: "100%", margin: "22px 0 0 0" }}>
-                <Link to="/get-free-crm" style={mobileCtaStyle} onClick={closeMobileMenu}>
-                  Start Free CRM
-                </Link>
-              </li>
-            </ul>
-          </nav>
-        </div>
-      )}
-      {/* --- CSS for responsive toggling (INLINE FOR EXAMPLE) --- */}
-      <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600&display=swap');
-        .navbar-main { font-family: 'Lexend Deca', Segoe UI, Arial, sans-serif; }
-        .desktop-only { display: none; }
-        .mobile-only { display: inline-flex !important; }
-        @media (min-width: 1024px) {
-          .desktop-only { display: inline-flex !important; }
-          .nav-links { display: flex !important; }
-          .mobile-only, .mobile-nav-menu { display: none !important; }
-        }
-      `}</style>
-    </header>
-  );
+  const navStyle = {
+    background: isScrolled ? "rgba(0, 112, 173, 0.95)" : "#0070AD",
+    backdropFilter: isScrolled ? "blur(10px)" : "none",
+    fontFamily: "'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif",
+    boxShadow: isScrolled ? "0 2px 20px rgba(0,0,0,0.1)" : "0 1px 0 0 #005680",
+    color: "#fff",
+    position: "fixed",
+    top: 0,
+    left: 0,
+    right: 0,
+    zIndex: 1000,
+    transition: "all 0.3s ease",
+    minHeight: 64
+  };
+
+  const closeMobileMenu = () => {
+    setMobileMenu(false);
+    setOpenDropdown(null);
+  };
+
+  const handleDropdownClick = (dropdown) => {
+    setOpenDropdown(openDropdown === dropdown ? null : dropdown);
+  };
+
+  return (
+    <>
+      {/* Spacer to prevent content jumping */}
+      <div style={{ height: 64 }} />
+      
+      <header style={navStyle} className="navbar-main">
+        <nav className="container" style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "0 clamp(16px, 4vw, 24px)",
+          height: 64,
+          position: "relative",
+          maxWidth: "1200px",
+          margin: "0 auto"
+        }}>
+          {/* LEFT: Logo + Desktop Navigation */}
+          <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
+            {/* Logo */}
+            <Link to="/" className="logo" style={{ 
+              display: "flex", 
+              alignItems: "center", 
+              height: 48,
+              flexShrink: 0,
+              marginRight: 8
+            }}>
+              <img 
+                src={logo} 
+                alt="Techstiq Logo" 
+                style={{ 
+                  height: 48,
+                  width: 48,
+                  objectFit: "contain",
+                  borderRadius: 6,
+                }}
+              />
+            </Link>
+
+            {/* Desktop Navigation */}
+            <ul className="nav-links desktop-only" style={{
+              display: "none",
+              alignItems: "center",
+              gap: "clamp(16px, 2.5vw, 28px)",
+              marginLeft: "clamp(16px, 4vw, 32px)",
+              listStyle: "none",
+              margin: 0,
+              padding: 0
+            }}>
+              {/* Products dropdown */}
+              <li className="nav-dropdown" style={{ position: "relative" }}
+                  onMouseEnter={() => setOpenDropdown("products")}
+                  onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button type="button" style={dropdownBtnStyle}>
+                  Products <ChevronDownIcon />
+                </button>
+                {openDropdown === "products" && (
+                  <div style={dropdownMenuStyle}>
+                    {PRODUCT_SERVICES.map((srv) => (
+                      <Link to={srv.path} key={srv.name} style={dropdownItemStyle}>
+                        <div style={{ fontWeight: 600, fontSize: 16 }}>{srv.name}</div>
+                        <div style={{ fontSize: 13, color: "#666", marginTop: 2 }}>{srv.desc}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+
+              {/* Solutions dropdown */}
+              <li className="nav-dropdown" style={{ position: "relative" }}
+                  onMouseEnter={() => setOpenDropdown("solutions")}
+                  onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button type="button" style={dropdownBtnStyle}>
+                  Solutions <ChevronDownIcon />
+                </button>
+                {openDropdown === "solutions" && (
+                  <div style={dropdownMenuStyle}>
+                    {SOLUTIONS.map((sol) => (
+                      <Link to={sol.path} key={sol.name} style={dropdownItemStyle}>
+                        <div style={{ fontWeight: 600, fontSize: 16 }}>{sol.name}</div>
+                        <div style={{ fontSize: 13, color: "#666", marginTop: 2 }}>{sol.desc}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+
+              {/* Pricing */}
+              <li>
+                <Link to="/pricing" style={navLinkStyle}>Pricing</Link>
+              </li>
+
+              {/* About Us - NEW */}
+              <li>
+                <Link to="/About-us" style={navLinkStyle}>About Us</Link>
+              </li>
+
+              {/* Resources dropdown */}
+              <li className="nav-dropdown" style={{ position: "relative" }}
+                  onMouseEnter={() => setOpenDropdown("resources")}
+                  onMouseLeave={() => setOpenDropdown(null)}
+              >
+                <button type="button" style={dropdownBtnStyle}>
+                  Resources <ChevronDownIcon />
+                </button>
+                {openDropdown === "resources" && (
+                  <div style={dropdownMenuStyle}>
+                    {RESOURCES.map((res) => (
+                      <Link to={res.path} key={res.name} style={dropdownItemStyle}>
+                        <div style={{ fontWeight: 600, fontSize: 16 }}>{res.name}</div>
+                        <div style={{ fontSize: 13, color: "#666", marginTop: 2 }}>{res.desc}</div>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+              </li>
+
+              {/* Contact Us - NEW */}
+              <li>
+                <Link to="/Contact-Us" style={navLinkStyle}>Contact-Us</Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* RIGHT: CTA and Mobile Menu */}
+          <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            {/* Desktop CTA */}
+            <Link to="/contact" className="desktop-only"
+              style={{
+                background: "linear-gradient(135deg, #ff642f, #e55527)",
+                color: "#fff",
+                borderRadius: 8,
+                padding: "10px 20px",
+                fontSize: "clamp(14px, 2vw, 15px)",
+                fontWeight: 600,
+                textDecoration: "none",
+                letterSpacing: 0.02,
+                boxShadow: "0 2px 8px rgba(255, 100, 47, 0.3)",
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+                display: "none"
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.transform = "translateY(-1px)";
+                e.target.style.boxShadow = "0 4px 12px rgba(255, 100, 47, 0.4)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.transform = "translateY(0)";
+                e.target.style.boxShadow = "0 2px 8px rgba(255, 100, 47, 0.3)";
+              }}
+            >
+              Get Started
+            </Link>
+
+            {/* Mobile Hamburger */}
+            <button className="mobile-only"
+              aria-label="Toggle navigation menu"
+              onClick={() => setMobileMenu(!mobileMenu)}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                background: "transparent",
+                border: 0,
+                cursor: "pointer",
+                padding: 8,
+                borderRadius: 4,
+                transition: "background-color 0.2s ease"
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = "rgba(255,255,255,0.1)"}
+              onMouseLeave={(e) => e.target.style.backgroundColor = "transparent"}
+            >
+              {mobileMenu ? <CloseIcon /> : <HamburgerIcon />}
+            </button>
+          </div>
+        </nav>
+
+        {/* Mobile Navigation Menu */}
+        <div className={`mobile-nav-menu ${mobileMenu ? 'open' : ''}`} style={{
+          ...mobileNavMenuStyle,
+          transform: mobileMenu ? 'translateX(0)' : 'translateX(100%)',
+          visibility: mobileMenu ? 'visible' : 'hidden'
+        }}>
+          {/* Mobile Menu Header with Logo and Close Button */}
+          <div style={{
+            position: "sticky",
+            top: 0,
+            background: "#0070AD",
+            borderBottom: "1px solid rgba(255,255,255,0.1)",
+            padding: "16px 24px",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            zIndex: 10
+          }}>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <img 
+                src={logo} 
+                alt="Techstiq Logo" 
+                style={{ 
+                  height: 32,
+                  width: 32,
+                  objectFit: "contain",
+                  borderRadius: 4
+                }}
+              />
+              <div style={{
+                color: "#fff",
+                fontSize: 16,
+                fontWeight: 600,
+                letterSpacing: 0.02
+              }}>
+                Techstiq
+              </div>
+            </div>
+            <button
+              onClick={closeMobileMenu}
+              aria-label="Close navigation menu"
+              style={{
+                background: "transparent",
+                border: "none",
+                cursor: "pointer",
+                padding: 8,
+                borderRadius: 4,
+                transition: "background-color 0.2s ease",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center"
+              }}
+              onMouseEnter={(e) => e.target.style.backgroundColor = "rgba(255,255,255,0.1)"}
+              onMouseLeave={(e) => e.target.style.backgroundColor = "transparent"}
+            >
+              <CloseIcon color="#fff" />
+            </button>
+          </div>
+
+          {/* Mobile Menu Content */}
+          <nav style={{ 
+            width: "100%", 
+            padding: "24px",
+            paddingTop: "16px"
+          }}>
+            <ul style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "stretch",
+              margin: 0,
+              padding: 0,
+              listStyle: "none",
+              gap: 8
+            }}>
+              {/* Mobile Dropdowns */}
+              <li style={{ width: "100%" }}>
+                <DropdownMobile
+                  label="Products"
+                  open={openDropdown === "products"}
+                  onClick={() => handleDropdownClick("products")}
+                  items={PRODUCT_SERVICES}
+                  closeMenu={closeMobileMenu}
+                />
+              </li>
+              <li style={{ width: "100%" }}>
+                <DropdownMobile
+                  label="Solutions"
+                  open={openDropdown === "solutions"}
+                  onClick={() => handleDropdownClick("solutions")}
+                  items={SOLUTIONS}
+                  closeMenu={closeMobileMenu}
+                />
+              </li>
+              <li style={{ width: "100%" }}>
+                <DropdownMobile
+                  label="Resources"
+                  open={openDropdown === "resources"}
+                  onClick={() => handleDropdownClick("resources")}
+                  items={RESOURCES}
+                  closeMenu={closeMobileMenu}
+                />
+              </li>
+              <li style={{ width: "100%" }}>
+                <Link to="/pricing" style={mobileLinkStyle} onClick={closeMobileMenu}>
+                  Pricing
+                </Link>
+              </li>
+              
+              {/* About Us - NEW for mobile */}
+              <li style={{ width: "100%" }}>
+                <Link to="/about" style={mobileLinkStyle} onClick={closeMobileMenu}>
+                  About Us
+                </Link>
+              </li>
+
+              {/* Contact Us - NEW for mobile */}
+              <li style={{ width: "100%" }}>
+                <Link to="/contact" style={mobileLinkStyle} onClick={closeMobileMenu}>
+                  Contact Us
+                </Link>
+              </li>
+              
+              {/* Mobile CTA */}
+              <li style={{ width: "100%", marginTop: 24 }}>
+                <Link to="/contact" style={mobileCtaStyle} onClick={closeMobileMenu}>
+                  Get Started
+                </Link>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        {/* Backdrop for mobile menu */}
+        {mobileMenu && (
+          <div 
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              width: '100vw',
+              height: '100vh',
+              background: 'rgba(0,0,0,0.5)',
+              zIndex: -1
+            }}
+            onClick={closeMobileMenu}
+          />
+        )}
+      </header>
+
+      {/* Enhanced Responsive CSS */}
+      <style>{`
+        @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600;700&display=swap');
+        
+        .navbar-main { 
+          font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
+        }
+        
+        .desktop-only { 
+          display: none !important; 
+        }
+        
+        .mobile-only { 
+          display: flex !important; 
+        }
+        
+        .mobile-nav-menu {
+          transition: transform 0.3s ease, visibility 0.3s ease;
+        }
+        
+        .mobile-nav-menu.open {
+          transform: translateX(0) !important;
+          visibility: visible !important;
+        }
+        
+        /* Logo responsive adjustments */
+        @media (max-width: 480px) {
+          .logo img {
+            height: 40px !important;
+            width: 40px !important;
+          }
+        }
+        
+        /* Tablet and Desktop */
+        @media (min-width: 768px) {
+          .nav-links {
+            gap: clamp(20px, 2.5vw, 28px) !important;
+          }
+          .logo img {
+            height: 52px !important;
+            width: 52px !important;
+          }
+        }
+        
+        @media (min-width: 1024px) {
+          .desktop-only { 
+            display: inline-flex !important; 
+          }
+          .nav-links { 
+            display: flex !important; 
+          }
+          .mobile-only, 
+          .mobile-nav-menu { 
+            display: none !important; 
+          }
+        }
+        
+        /* Large screens */
+        @media (min-width: 1200px) {
+          .nav-links {
+            gap: 28px !important;
+            margin-left: 48px !important;
+          }
+          .logo img {
+            height: 56px !important;
+            width: 56px !important;
+          }
+        }
+        
+        /* Extra large screens */
+        @media (min-width: 1400px) {
+          .nav-links {
+            gap: 32px !important;
+          }
+        }
+        
+        /* Hover effects for desktop */
+        @media (hover: hover) {
+          .nav-dropdown:hover button {
+            color: #e0f7fa;
+          }
+        }
+      `}</style>
+    </>
+  );
 };
 
-// --- Styles objects as before ---
+// Style objects (same as before)
 const navLinkStyle = {
-  color: "#fff",
-  fontWeight: 600,
-  fontSize: 16,
-  letterSpacing: 0.05,
-  textDecoration: "none",
-  padding: "6px 12px"
+  color: "#fff",
+  fontWeight: 600,
+  fontSize: "clamp(14px, 2vw, 16px)",
+  letterSpacing: 0.02,
+  textDecoration: "none",
+  padding: "8px 12px",
+  borderRadius: 4,
+  transition: "color 0.2s ease, background-color 0.2s ease"
 };
 
 const dropdownBtnStyle = {
-  color: "#fff",
-  fontWeight: 600,
-  fontSize: 16,
-  background: "none",
-  border: "none",
-  cursor: "pointer",
-  display: "flex",
-  alignItems: "center",
-  gap: 3,
-  letterSpacing: 0.05,
-  padding: "6px 12px"
+  color: "#fff",
+  fontWeight: 600,
+  fontSize: "clamp(14px, 2vw, 16px)",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  gap: 6,
+  letterSpacing: 0.02,
+  padding: "8px 12px",
+  borderRadius: 4,
+  transition: "color 0.2s ease, background-color 0.2s ease"
+};
+
+const dropdownBtnMobileStyle = {
+  ...dropdownBtnStyle,
+  width: "100%",
+  justifyContent: "space-between",
+  fontSize: 16,
+  padding: "16px 20px",
+  borderBottom: "1px solid rgba(255,255,255,0.1)"
 };
 
 const dropdownMenuStyle = {
-  position: "absolute",
-  top: "calc(100% + 6px)",
-  left: 0,
-  background: "#fff",
-  borderRadius: 8,
-  boxShadow: "0 6px 24px 0 rgba(0,0,0,.10)",
-  zIndex: 16,
-  minWidth: 220,
-  fontFamily: "'Lexend Deca', Segoe UI, Arial, sans-serif"
+  position: "absolute",
+  top: "calc(100% + 8px)",
+  left: 0,
+  background: "#fff",
+  borderRadius: 12,
+  boxShadow: "0 8px 32px rgba(0,0,0,0.12)",
+  zIndex: 100,
+  minWidth: 280,
+  padding: "8px 0",
+  fontFamily: "'Lexend Deca', sans-serif",
+  border: "1px solid rgba(0,0,0,0.05)"
 };
 
 const dropdownItemStyle = {
-  display: "block",
-  padding: "14px 18px",
-  textDecoration: "none",
-  color: "#222",
-  borderRadius: 4,
-  marginBottom: 2
+  display: "block",
+  padding: "16px 20px",
+  textDecoration: "none",
+  color: "#222",
+  borderRadius: 8,
+  margin: "0 8px",
+  transition: "background-color 0.2s ease"
 };
 
 const mobileNavMenuStyle = {
-  position: "fixed",
-  top: 0,
-  left: 0,
-  width: "100vw",
-  height: "100vh",
-  background: "#0070AD",
-  zIndex: 99,
-  padding: "38px 0 0 0"
+  position: "fixed",
+  top: 0,
+  right: 0,
+  width: "min(100vw, 400px)",
+  height: "100vh",
+  background: "linear-gradient(180deg, #0070AD 0%, #005680 100%)",
+  zIndex: 999,
+  overflowY: "auto",
+  WebkitOverflowScrolling: "touch"
 };
 
 const dropdownMenuMobileStyle = {
-  background: "#f3f3f3",
-  width: "97vw",
-  margin: "0 auto",
-  borderRadius: 8,
-  boxShadow: "0 2px 12px 0 rgba(0,0,0,.08)",
-  marginTop: 6,
-  fontFamily: "'Lexend Deca', Segoe UI, Arial, sans-serif"
+  background: "rgba(255,255,255,0.95)",
+  backdropFilter: "blur(10px)",
+  margin: "8px 16px",
+  borderRadius: 12,
+  boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+  overflow: "hidden"
 };
 
 const dropdownItemStyleMobile = {
-  display: "block",
-  padding: "12px 18px",
-  textDecoration: "none",
-  color: "#222",
-  borderRadius: 4,
-  marginBottom: 2
+  display: "block",
+  padding: "16px 20px",
+  textDecoration: "none",
+  color: "#222",
+  borderBottom: "1px solid rgba(0,0,0,0.05)",
+  transition: "background-color 0.2s ease"
 };
 
 const mobileLinkStyle = {
-  color: "#fff",
-  fontWeight: 600,
-  fontSize: 18,
-  textDecoration: "none",
-  padding: "10px 0",
-  display: "block",
-  textAlign: "center"
+  color: "#fff",
+  fontWeight: 600,
+  fontSize: 16,
+  textDecoration: "none",
+  padding: "16px 20px",
+  display: "block",
+  borderBottom: "1px solid rgba(255,255,255,0.1)",
+  transition: "background-color 0.2s ease"
 };
 
 const mobileCtaStyle = {
-  background: "#ff642f",
-  color: "#fff",
-  borderRadius: 8,
-  padding: "12px",
-  fontSize: 18,
-  fontWeight: 600,
-  textDecoration: "none",
-  textAlign: "center",
-  display: "block",
-  margin: "0 auto"
+  background: "linear-gradient(135deg, #ff642f, #e55527)",
+  color: "#fff",
+  borderRadius: 12,
+  padding: "16px 24px",
+  fontSize: 16,
+  fontWeight: 700,
+  textDecoration: "none",
+  textAlign: "center",
+  display: "block",
+  margin: "0 16px",
+  boxShadow: "0 4px 16px rgba(255, 100, 47, 0.3)",
+  transition: "all 0.2s ease"
 };
 
 export default Navbar;

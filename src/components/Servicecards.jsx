@@ -1,28 +1,83 @@
 import React from "react";
 import { FiCheckCircle } from "react-icons/fi";
 
-// Product data (customize as needed)
-const PRODUCTS = [
+// IT Services data
+const SERVICES = [
   {
-    name: "Marketing Suite",
-    trademark: "®",
-    description: "AI-powered marketing software that helps you generate leads and automate marketing.",
-    imageUrl: "https://via.placeholder.com/30/1976d2/ffffff?text=M",
-    features: ["Social media agent", "Marketing automation", "Analytics"],
+    name: "Custom Software Development",
+    trademark: "",
+    description: "We design and build scalable, high-performance software tailored to your business needs, ensuring seamless integration and long-term usability.",
+    imageUrl: "",
+    features: ["Tailored applications for web, mobile, and desktop", "Agile development with regular iterations", "Scalable architecture for future growth"],
     learnMoreUrl: "#"
   },
   {
-    name: "Sales Platform",
-    trademark: "®",
-    description: "Easy-to-adopt sales software powered by AI for pipeline and deal management.",
-    imageUrl: "https://via.placeholder.com/30/2196f3/ffffff?text=S",
-    features: ["Sales workspace", "Deal management", "Prospecting agent"],
+    name: "IT Consulting & Strategy",
+    trademark: "",
+    description: "Our experts assess your IT infrastructure and provide strategic guidance to align technology with your business goals.",
+    imageUrl: "",
+    features: ["Technology audits and gap analysis", "Digital transformation strategy", "Roadmap planning and implementation support"],
     learnMoreUrl: "#"
   },
-  // Add your other product cards here...
+  {
+    name: "Cloud Computing Services",
+    trademark: "",
+    description: "We help businesses migrate, deploy, and manage cloud-based infrastructure to boost efficiency and reduce costs.",
+    imageUrl: "",
+    features: ["Cloud migration (AWS, Azure, GCP)", "DevOps and CI/CD pipeline setup", "Scalable, secure cloud architecture"],
+    learnMoreUrl: "#"
+  },
+  {
+    name: "Cybersecurity Solutions",
+    trademark: "",
+    description: "Comprehensive cybersecurity services to protect your digital assets, systems, and data from modern threats.",
+    imageUrl: "",
+    features: ["Threat detection and vulnerability assessments", "Data encryption and network security", "Security compliance and risk management"],
+    learnMoreUrl: "#"
+  },
+  {
+    name: "IT Infrastructure Management",
+    trademark: "",
+    description: "We maintain and optimize your IT infrastructure to ensure uptime, performance, and secure operations.",
+    imageUrl: "",
+    features: ["Server and network management", "24/7 monitoring and support", "Backup and disaster recovery solutions"],
+    learnMoreUrl: "#"
+  },
+  {
+    name: "Mobile App Development",
+    trademark: "",
+    description: "We create high-performance mobile apps with intuitive UX for Android and iOS platforms tailored to your business.",
+    imageUrl: "",
+    features: ["Native and cross-platform development", "App store optimization and launch", "Maintenance and feature updates"],
+    learnMoreUrl: "#"
+  },
+  {
+    name: "Web Development & Design",
+    trademark: "",
+    description: "We craft responsive, user-centric websites that reflect your brand and drive engagement.",
+    imageUrl: "",
+    features: ["Custom UI/UX design", "SEO-friendly and fast-loading", "CMS integration and e-commerce solutions"],
+    learnMoreUrl: "#"
+  },
+  {
+    name: "Managed IT Services",
+    trademark: "",
+    description: "Outsource your IT operations to us and focus on growing your business while we ensure everything runs smoothly.",
+    imageUrl: "",
+    features: ["Proactive monitoring and support", "Helpdesk services and remote support", "Regular system updates and maintenance"],
+    learnMoreUrl: "#"
+  },
+  {
+    name: "Data Analytics & Business Intelligence",
+    trademark: "",
+    description: "Turn raw data into actionable insights with our advanced analytics and reporting solutions.",
+    imageUrl: "",
+    features: ["Dashboard development and visualization", "Predictive analytics and data modeling", "Integration with third-party data sources"],
+    learnMoreUrl: "#"
+  }
 ];
 
-function ProductCard({
+function ServiceCard({
   name,
   trademark,
   description,
@@ -72,7 +127,7 @@ function ProductCard({
             </h5>
           </div>
           <p className="card-text">{description}</p>
-          <h6 className="fw-semibold text-primary">Popular Features</h6>
+          <h6 className="fw-semibold text-primary">Key Features</h6>
           <ul className="list-unstyled mb-3">
             {features.map((feature, i) => (
               <li key={i} className="d-flex align-items-center mb-1">
@@ -81,7 +136,7 @@ function ProductCard({
               </li>
             ))}
           </ul>
-          <a
+          {/* <a
             href={learnMoreUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -93,19 +148,19 @@ function ProductCard({
             }}
           >
             Learn more <span className="visually-hidden">about {name}</span>
-          </a>
+          </a> */}
         </div>
       </div>
     </div>
   );
 }
 
-export default function ProductCards() {
+export default function ServiceCards() {
   return (
     <div className="container py-5">
       <div className="row g-4">
-        {PRODUCTS.map((prod, idx) => (
-          <ProductCard key={prod.name} {...prod} />
+        {SERVICES.map((service, idx) => (
+          <ServiceCard key={service.name} {...service} />
         ))}
       </div>
       {/* Animation keyframes */}
