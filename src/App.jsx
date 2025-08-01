@@ -9,7 +9,7 @@ import Footer from './components/Footer.jsx';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import Banner from './components/HomePage..jsx';
-
+import BlogList from './components/Resources/blog-page.jsx';
 function App() {
   const location = useLocation();
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -56,6 +56,8 @@ function App() {
         <Route path="/" element={<Banner />} />
         <Route path="/About-Us" element={<AboutUs />} />
         <Route path="/Contact-Us" element={<ContactUs />} />
+        <Route path="/resources/blog" element={<BlogList />} />
+        
       </Routes>
       <Footer />
 
