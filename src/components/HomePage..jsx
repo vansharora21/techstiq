@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import ProductCards from './Servicecards';
 import DigitalTransformationBanner from './motivesection';
+import WhyChooseUsSection from './WhyChooseus';
 
 export default function Banner() {
   // Create a ref for the ProductCards section
@@ -238,6 +239,9 @@ export default function Banner() {
             </div>
           </div>
         </div>
+      </div>
+      <div>
+      <WhyChooseUsSection/>
       </div>
       
       {/* ProductCards section with ref */}

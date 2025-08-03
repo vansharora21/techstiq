@@ -233,7 +233,7 @@ function AboutUsPage() {
     }}>
       {/* SEO */}
       <Helmet>
-        <link rel="icon" href="/logo.png" />
+        
         <title>About Us | TechStiq Solutions – IT Services & Digital Transformation</title>
         <meta name="description" content="TechStiq Solutions is a forward-thinking IT services firm driving digital transformation across industries with client-centric approach and deep expertise." />
         <meta name="keywords" content="TechStiq Solutions, IT services, digital transformation, cybersecurity, cloud solutions, application development" />
@@ -811,7 +811,9 @@ function AboutUsPage() {
             </span>
           </Link>
         </div>
+        
       </section>
+      
 
       {/* Enhanced CSS Animations */}
       <style jsx global>{`

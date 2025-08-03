@@ -61,29 +61,29 @@ const RESOURCES = [
 // Icons
 const HamburgerIcon = ({ color = "#fff" }) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <rect y="5" width="24" height="2" rx="1" fill={color}/>
-    <rect y="11" width="24" height="2" rx="1" fill={color}/>
-    <rect y="17" width="24" height="2" rx="1" fill={color}/>
+    <rect y="5" width="24" height="2" rx="1" fill={color} />
+    <rect y="11" width="24" height="2" rx="1" fill={color} />
+    <rect y="17" width="24" height="2" rx="1" fill={color} />
   </svg>
 );
 
 const CloseIcon = ({ color = "#fff" }) => (
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-    <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round"/>
-    <line x1="6" y1="18" x2="18" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round"/>
+    <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+    <line x1="6" y1="18" x2="18" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round" />
   </svg>
 );
 
 const ChevronDownIcon = ({ color = "#fff" }) => (
   <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-    <path d="M7 10l5 5 5-5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M7 10l5 5 5-5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
 const ThemeSwitchIcon = ({ color = "#fff" }) => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-    <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2"/>
-    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke={color} strokeWidth="2"/>
+    <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" />
+    <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42" stroke={color} strokeWidth="2" />
   </svg>
 );
 
@@ -107,9 +107,9 @@ const DropdownMenu = ({ items, isVisible, theme }) => (
     transition: "opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease",
   }}>
     {items.map(item => (
-      <Link 
-        to={item.path} 
-        key={item.name} 
+      <Link
+        to={item.path}
+        key={item.name}
         className="dropdown-item"
         style={{
           display: "flex",
@@ -140,9 +140,9 @@ function DropdownMobile({ label, open, onClick, items, closeMenu, theme }) {
         borderBottom: `1px solid rgba(255,255,255,0.1)`
       }} onClick={onClick}>
         <span>{label}</span>
-        <div style={{ 
-          transform: open ? 'rotate(180deg)' : 'rotate(0deg)', 
-          transition: 'transform 0.2s ease' 
+        <div style={{
+          transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+          transition: 'transform 0.2s ease'
         }}>
           <ChevronDownIcon color={theme.navText} />
         </div>
@@ -185,7 +185,7 @@ const Navbar = () => {
   const [openDropdown, setOpenDropdown] = useState(null);
   const [isScrolled, setIsScrolled] = useState(false);
   const [themeName, setThemeName] = useState("light");
-  
+
   const theme = themes[themeName];
 
   const toggleTheme = () => {
@@ -241,7 +241,7 @@ const Navbar = () => {
     <>
       {/* Spacer to prevent content jumping */}
       <div style={{ height: 64 }} />
-      
+
       <header style={navStyle} className="navbar-main">
         <nav className="container" style={{
           display: "flex",
@@ -256,17 +256,17 @@ const Navbar = () => {
           {/* LEFT: Logo + Desktop Navigation */}
           <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
             {/* Logo */}
-            <Link to="/" className="logo" style={{ 
-              display: "flex", 
-              alignItems: "center", 
+            <Link to="/" className="logo" style={{
+              display: "flex",
+              alignItems: "center",
               height: 48,
               flexShrink: 0,
               marginRight: 8
             }}>
-              <img 
-                src={logo} 
-                alt="Techstiq Logo" 
-                style={{ 
+              <img
+                src={logo}
+                alt="Techstiq Logo"
+                style={{
                   height: 48,
                   width: 48,
                   objectFit: "contain",
@@ -285,8 +285,21 @@ const Navbar = () => {
               margin: 0,
               padding: 0
             }}>
+              <li>
+                <Link to="/" style={{
+                  color: theme.navText,
+                  fontWeight: 600,
+                  fontSize: "clamp(14px, 2vw, 16px)",
+                  letterSpacing: 0.02,
+                  textDecoration: "none",
+                  padding: "8px 12px",
+                  borderRadius: 4,
+                  transition: "color 0.2s ease, background-color 0.2s ease"
+                }}>Home</Link>
+              </li>
+
               {/* Products dropdown */}
-              <li className="nav-dropdown" style={{ position: "relative" }}
+              {/* <li className="nav-dropdown" style={{ position: "relative" }}
                   onMouseEnter={() => setOpenDropdown("products")}
                   onMouseLeave={() => setOpenDropdown(null)}
               >
@@ -312,10 +325,10 @@ const Navbar = () => {
                   isVisible={openDropdown === "products"} 
                   theme={theme} 
                 />
-              </li>
+              </li> */}
 
               {/* Solutions dropdown */}
-              <li className="nav-dropdown" style={{ position: "relative" }}
+              {/* <li className="nav-dropdown" style={{ position: "relative" }}
                   onMouseEnter={() => setOpenDropdown("solutions")}
                   onMouseLeave={() => setOpenDropdown(null)}
               >
@@ -341,10 +354,10 @@ const Navbar = () => {
                   isVisible={openDropdown === "solutions"} 
                   theme={theme} 
                 />
-              </li>
+              </li> */}
 
               {/* Pricing */}
-              <li>
+              {/* <li>
                 <Link to="/pricing" style={{
                   color: theme.navText,
                   fontWeight: 600,
@@ -355,7 +368,7 @@ const Navbar = () => {
                   borderRadius: 4,
                   transition: "color 0.2s ease, background-color 0.2s ease"
                 }}>Pricing</Link>
-              </li>
+              </li> */}
 
               {/* About Us */}
               <li>
@@ -371,10 +384,23 @@ const Navbar = () => {
                 }}>About Us</Link>
               </li>
 
+              {/* Contact Us */}
+              <li>
+                <Link to="/Contact-Us" style={{
+                  color: theme.navText,
+                  fontWeight: 600,
+                  fontSize: "clamp(14px, 2vw, 16px)",
+                  letterSpacing: 0.02,
+                  textDecoration: "none",
+                  padding: "8px 12px",
+                  borderRadius: 4,
+                  transition: "color 0.2s ease, background-color 0.2s ease"
+                }}>Contact Us</Link>
+              </li>
               {/* Resources dropdown */}
               <li className="nav-dropdown" style={{ position: "relative" }}
-                  onMouseEnter={() => setOpenDropdown("resources")}
-                  onMouseLeave={() => setOpenDropdown(null)}
+                onMouseEnter={() => setOpenDropdown("resources")}
+                onMouseLeave={() => setOpenDropdown(null)}
               >
                 <button type="button" style={{
                   color: theme.navText,
@@ -393,25 +419,11 @@ const Navbar = () => {
                 }}>
                   Resources <ChevronDownIcon color={theme.navText} />
                 </button>
-                <DropdownMenu 
-                  items={RESOURCES} 
-                  isVisible={openDropdown === "resources"} 
-                  theme={theme} 
+                <DropdownMenu
+                  items={RESOURCES}
+                  isVisible={openDropdown === "resources"}
+                  theme={theme}
                 />
-              </li>
-
-              {/* Contact Us */}
-              <li>
-                <Link to="/Contact-Us" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  letterSpacing: 0.02,
-                  textDecoration: "none",
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>Contact Us</Link>
               </li>
             </ul>
           </div>
@@ -449,7 +461,7 @@ const Navbar = () => {
             </button>
 
             {/* Desktop CTA */}
-            <Link to="/contact" className="desktop-only"
+            <Link to="/Contact-Us" className="desktop-only"
               style={{
                 background: theme.ctaGradient,
                 color: "#fff",
@@ -527,10 +539,10 @@ const Navbar = () => {
             zIndex: 10
           }}>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <img 
-                src={logo} 
-                alt="Techstiq Logo" 
-                style={{ 
+              <img
+                src={logo}
+                alt="Techstiq Logo"
+                style={{
                   height: 32,
                   width: 32,
                   objectFit: "contain",
@@ -586,8 +598,8 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Content */}
-          <nav style={{ 
-            width: "100%", 
+          <nav style={{
+            width: "100%",
             padding: "24px",
             paddingTop: "16px"
           }}>
@@ -645,7 +657,7 @@ const Navbar = () => {
                   Pricing
                 </Link>
               </li>
-              
+
               <li style={{ width: "100%" }}>
                 <Link to="/about" style={{
                   color: theme.navText,
@@ -675,7 +687,7 @@ const Navbar = () => {
                   Contact Us
                 </Link>
               </li>
-              
+
               {/* Mobile CTA */}
               <li style={{ width: "100%", marginTop: 24 }}>
                 <Link to="/contact" style={{
@@ -701,7 +713,7 @@ const Navbar = () => {
 
         {/* Backdrop for mobile menu */}
         {mobileMenu && (
-          <div 
+          <div
             style={{
               position: 'fixed',
               top: 0,
@@ -718,6 +730,26 @@ const Navbar = () => {
 
       {/* Enhanced Responsive CSS */}
       <style>{`
+      .nav-links li a {
+  position: relative;
+  text-decoration: none;
+}
+
+.nav-links li a::after {
+  content: "";
+  position: absolute;
+  bottom: 3px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #41c3c9;
+  transition: width 0.3s ease;
+}
+
+.nav-links li a:hover::after {
+  width: 100%;
+}
+
         @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600;700&display=swap');
         
         .navbar-main { 
