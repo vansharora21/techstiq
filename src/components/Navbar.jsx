@@ -464,14 +464,14 @@ const Navbar = () => {
             <Link to="/Contact-Us" className="desktop-only"
               style={{
                 background: 'white',
-                color: "rgb(15, 148, 219)", // Change this to white
+                color: "#0070AD", // Change this to white
                 borderRadius: 8,
                 padding: "10px 20px",
                 fontSize: "clamp(14px, 2vw, 15px)",
                 fontWeight: 600,
                 textDecoration: "none",
                 letterSpacing: 0.02,
-                boxShadow: "0 2px 8px rgba(255, 100, 47, 0.3)",
+                // boxShadow: "0 2px 8px rgba(255, 100, 47, 0.3)",
                 transition: "all 0.2s ease",
                 whiteSpace: "nowrap",
                 display: "none"

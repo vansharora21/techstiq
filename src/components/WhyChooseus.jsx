@@ -1,38 +1,29 @@
 import React, { useEffect, useRef } from "react";
 
 const features = [
-  {
-    title: "Understanding & Expertise",
-    description:
-      "We listen attentively, and our clients appreciate it the most. We have a highly refined approach of understanding requirements in detail and we deliver more than the commitment. We do our own research to understand clients need, branding goals, target market & audience and accordingly offer customised digital solutions.",
-    icon: "flaticon-process",
-    number: "1",
-  },
-  {
-    title: "Work Culture",
-    description:
-      "We have a very supportive ecosystem to encourage and cultivate innovation. Our team is highly experienced and professionally trained to understand, communicate, share, and execute projects in scheduled time. Our highly agile and responsive work culture ensures efficient development, launch, and maintenance of digital projects.",
-    icon: "flaticon-system",
-    number: "2",
-  },
-  {
-    title: "Collaborative Communication",
-    description:
-      "For the smooth execution of digital transformation projects, effective communication between internal and external teams is essential. Our design and development team will work closely with you, sharing all relevant details and responding quickly to any questions or concerns you may have within the agreed-upon working hours.",
-    icon: "flaticon-data",
-    number: "3",
-  },
-  {
-    title: "360° Digital Solution",
-    description:
-      "We promise to deliver a total digital solution under one roof with perfection. Web development is more than just coding and programming – it also includes creating user-friendly websites that are responsive to different devices. Our cohesive approach helps us deliver the highest quality work with minimum turnaround time.",
-    icon: "flaticon-space",
-    number: "4",
-  },
+  { title: "Proven Industry Expertise", icon: "flaticon-process", number: "1" },
+  { title: "Client-Centric Approach", icon: "flaticon-system", number: "2" },
+  { title: "360° Digital Transformation", icon: "flaticon-data", number: "3" },
+  { title: "Innovative Problem-Solving", icon: "flaticon-idea", number: "4" },
+  { title: "Transparent Communication", icon: "flaticon-chat", number: "5" },
+  { title: "Agile & Adaptive Delivery", icon: "flaticon-agile", number: "6" },
+  { title: "Cutting-Edge Technology Stack", icon: "flaticon-code", number: "7" },
+  { title: "Scalable Solutions", icon: "flaticon-growth", number: "8" },
+  { title: "Data-Driven Decision Making", icon: "flaticon-analytics", number: "9" },
+  { title: "Security & Compliance First", icon: "flaticon-security", number: "10" },
+  { title: "Dedicated Project Ownership", icon: "flaticon-project", number: "11" },
+  { title: "Collaborative Partnership", icon: "flaticon-collaborate", number: "12" },
+  { title: "Cost-Effective Innovation", icon: "flaticon-cost", number: "13" },
+  { title: "On-Time, On-Budget Delivery", icon: "flaticon-time", number: "14" },
+  { title: "Global Delivery Capability", icon: "flaticon-global", number: "15" },
+  { title: "Continuous Improvement Mindset", icon: "flaticon-improve", number: "16" },
+  { title: "End-User Experience Focus", icon: "flaticon-user", number: "17" },
+  { title: "Robust Quality Assurance", icon: "flaticon-quality", number: "18" },
+  { title: "Long-Term Relationship Building", icon: "flaticon-relationship", number: "19" },
+  { title: "Post-Deployment Support", icon: "flaticon-support", number: "20" },
 ];
 
 export default function WhyChooseUsSection() {
-  // Card entrance animation
   const cardsRef = useRef([]);
 
   useEffect(() => {
@@ -40,7 +31,7 @@ export default function WhyChooseUsSection() {
       cardsRef.current.forEach((ref) => {
         if (ref) {
           const rect = ref.getBoundingClientRect();
-          if (rect.top < window.innerHeight * 0.9) {
+          if (rect.top < window.innerHeight * 0.94) {
             ref.classList.add("wcu-animate-in");
           }
         }
@@ -54,14 +45,14 @@ export default function WhyChooseUsSection() {
   return (
     <section className="wcu-whyus-section">
       <style>{`
+        /* Keep your original section styles as is */
         .wcu-whyus-section {
           position: relative;
           overflow: hidden;
-          background: linear-gradient(135deg,#d7f1fa 0%, #b3ebf9 100%);
+          background: linear-gradient(135deg, #e0f7fa, #e0ecfc 70%, #f0fbfc);
           padding: 70px 0 70px 0;
           min-height: 100vh;
         }
-        /* Floating animated circles background */
         .wcu-bg-circ {
           position: absolute; border-radius: 50%; opacity: .19;
           pointer-events:none;
@@ -93,12 +84,11 @@ export default function WhyChooseUsSection() {
         @keyframes wcu-move3 {to{transform:translateY(-55px) scale(.88);}}
         @keyframes wcu-move4 {to{transform:translateY(42px) scale(1.07) rotate(7deg);}}
 
-        /* HEADER */
         .wcu-section-head {
           text-align:center; margin-bottom: 60px; position:relative; z-index:1;
         }
         .wcu-section-head h5 {
-          color:#34a2ef; margin-bottom:8px; text-transform:uppercase; letter-spacing:2px;
+          color:#0070AD; margin-bottom:8px; text-transform:uppercase; letter-spacing:2px;
           opacity:.83; font-weight: 500;
           font-size: 1rem;
         }
@@ -107,7 +97,7 @@ export default function WhyChooseUsSection() {
           line-height:1.1; letter-spacing:-.5px;
         }
         .wcu-section-head h2 span {
-          color:#158ff6;
+          color:#0070AD;
         }
         .wcu-animated-bar {
           margin: 0 auto;
@@ -123,108 +113,114 @@ export default function WhyChooseUsSection() {
         }
         @keyframes wcu-barExpand {to{width:100%;}}
 
-        /* Responsive grid */
         .wcu-row { display: flex; flex-wrap: wrap; margin-left: -15px; margin-right: -15px;}
         .wcu-col { flex: 1 0 100%; max-width:100%; padding:15px; }
         @media (min-width: 700px) {.wcu-col{flex:1 0 50%;max-width:50%;}}
         @media (min-width: 1100px) {.wcu-col{flex:1 0 25%;max-width:25%;}}
+        @media (min-width: 1600px) {.wcu-col{flex:1 0 20%;max-width:20%;}}
 
-        /* Cards */
+        /* === SMALL CARDS STYLING ONLY === */
         .wcu-feature-card {
-          border-radius:21px;
+          border-radius: 21px;
           background: rgba(255,255,255,0.98);
-          box-shadow: 0 2px 30px 0 rgba(50,172,255,.07), 0 5px 32px 0 rgba(80,205,255,0.13);
-          padding:38px 24px 38px 24px;
-          min-height:370px;
-          position:relative;
-          display:flex; flex-direction:column; z-index:2;
-          transform: translateY(60px) scale(.98) rotateZ(2deg); opacity:0;
-          will-change:transform, box-shadow, background, filter, opacity;
-          transition: all .48s cubic-bezier(.16,.81,.38,.99);
+          box-shadow: 0 2px 20px 0 rgba(50,172,255,0.05), 0 5px 24px 0 rgba(80,205,255,0.10);
+          padding: 16px 12px 16px 12px;
+          min-height: 120px;
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          transform: translateY(25px) scale(0.97) rotateZ(1deg);
+          opacity: 0;
+          will-change: transform, box-shadow, background, filter, opacity;
+          transition: all 0.40s cubic-bezier(0.16,0.81,0.38,0.99);
+          text-align: center;
+          user-select: none;
         }
         .wcu-animate-in {
-          opacity:1;
+          opacity: 1;
           transform: translateY(0) scale(1) rotateZ(0deg);
         }
-        .wcu-feature-card:hover, .wcu-feature-card:focus-visible {
-          background: linear-gradient(110deg,#e7f6ff 0%,#f5fcff 100%);
-          box-shadow:0 10px 40px 0 #67c2fa22, 0 2px 80px 0 #3eabd912, 0 2px 80px 0 #3eaecc10;
-          transform: scale(1.058) translateY(-10px) rotateZ(-1deg);
-          filter: brightness(1.08) drop-shadow(0 0 17px #8fd5ff60);
-          z-index:5;
-        }
-        .wcu-feature-title h3 {
-          font-size:1.22rem;
-          font-weight: 700;
-          color: #184880;
-          margin-bottom:13px;
-          letter-spacing:0;
-          line-height:1.3;
-        }
-        .wcu-feature-txt p {
-          font-size: 1.06rem;
-          color: #567;
-          margin-bottom:22px;
-          line-height:1.65;
-          font-weight:400;
+        .wcu-feature-card:hover,
+        .wcu-feature-card:focus-visible {
+          background: linear-gradient(110deg, #e7f6ff 0%, #f5fcff 100%);
+          box-shadow: 0 8px 32px 0 #67c2fa22, 0 2px 70px 0 #3eabd912, 0 2px 70px 0 #3eaecc10;
+          transform: scale(1.05) translateY(-6px) rotateZ(-1deg);
+          filter: brightness(1.06) drop-shadow(0 0 12px #8fd5ff50);
+          z-index: 5;
         }
         .wcu-feature-icon {
-          font-size:2.4rem;
+          font-size: 1.6rem;
           color: #37aff6;
-          margin-bottom:10px;
-          transition: color .2s;
+          margin-bottom: 8px;
+          transition: color 0.2s;
+          user-select: none;
         }
-        .wcu-feature-card:hover .wcu-feature-icon { color: #1477f4; filter:drop-shadow(0 0 8px #60c8ffba);}
-
+        .wcu-feature-card:hover .wcu-feature-icon {
+          color: #1477f4;
+          filter: drop-shadow(0 0 6px #60c8ffba);
+        }
+        .wcu-feature-title h3 {
+          font-size: 0.95rem;
+          font-weight: 700;
+          color: #184880;
+          margin-bottom: 0;
+          line-height: 1.25;
+          user-select: none;
+        }
         .wcu-feature-number {
-          position:absolute; right:20px; top:23px; z-index:0;
+          position: absolute;
+          right: 18px;
+          top: 14px;
+          z-index: 0;
+          user-select: none;
         }
         .wcu-feature-number h2 {
-          font-size:2.8rem; font-weight: bold; color:#d1f5ff; opacity:.21; user-select:none;
+          font-size: 1.8rem;
+          font-weight: bold;
+          color: #d1f5ff;
+          opacity: 0.18;
+          margin: 0;
+          user-select: none;
+          line-height: 1;
         }
+
       `}</style>
 
-      {/* ------ ANIMATED SOFT BACKGROUND ------ */}
+      {/* Animated circles */}
       <span className="wcu-bg-circ wcu-bg-circ1"></span>
       <span className="wcu-bg-circ wcu-bg-circ2"></span>
       <span className="wcu-bg-circ wcu-bg-circ3"></span>
       <span className="wcu-bg-circ wcu-bg-circ4"></span>
 
-      {/* ---------- HEADER ----------- */}
       <div className="container">
         <div className="wcu-section-head">
           <h5>Why Choose Us</h5>
           <h2>
-            Building Unique <span>Digital Identity</span>
-            <br />
+            Building Unique <span>Digital Identity</span><br />
             To Help Business Shine &amp; Scale
           </h2>
-          <div className="wcu-animated-bar">
-            <span />
-          </div>
+          <div className="wcu-animated-bar"><span /></div>
         </div>
 
-        {/* -------- FEATURES -------- */}
         <div className="wcu-row">
-          {features.map((f, idx) => (
+          {features.map((feature, idx) => (
             <div className="wcu-col" key={idx}>
               <div
                 ref={(el) => (cardsRef.current[idx] = el)}
                 className="wcu-feature-card"
                 tabIndex={0}
               >
-                <div className="wcu-feature-title">
-                  <h3>{f.title}</h3>
-                </div>
-                <div className="wcu-feature-txt">
-                  <p>{f.description}</p>
-                </div>
                 <div className="wcu-feature-icon">
-                  {/* You can substitute with your preferred icon library */}
-                  <i className={f.icon}></i>
+                  <i className={feature.icon}></i>
+                </div>
+                <div className="wcu-feature-title">
+                  <h3>{feature.title}</h3>
                 </div>
                 <div className="wcu-feature-number">
-                  <h2>{f.number}</h2>
+                  <h2>{feature.number}</h2>
                 </div>
               </div>
             </div>

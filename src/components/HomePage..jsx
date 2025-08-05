@@ -119,7 +119,7 @@ export default function Banner() {
               >
                 Turn ideas into{' '}
                 <span style={{
-                  color: '#2563eb',
+                  color: '#0070AD',
                   fontStyle: 'italic',
                   textDecoration: 'underline',
                   textDecorationColor: '#bfdbfe',
@@ -146,8 +146,8 @@ export default function Banner() {
                   href="#contact"
                   className="btn btn-primary btn-lg px-4 py-3"
                   style={{
-                    background: 'linear-gradient(90deg, #38bdf8, #0ea5e9)',
-                    border: '2px solid #38bdf8',
+                    background: '#0070AD',
+                    border: '2px solid #0070AD',
                     fontWeight: 600,
                     fontSize: 'clamp(0.9rem, 2vw, 1.125rem)',
                     minWidth: '160px'
@@ -159,8 +159,8 @@ export default function Banner() {
                   onClick={scrollToProductCards}
                   className="btn btn-outline-primary btn-lg px-4 py-3 scroll-btn"
                   style={{
-                    color: '#2563eb',
-                    borderColor: '#2563eb',
+                    color: '#0070AD',
+                    borderColor: '#0070AD',
                     background: '#fff',
                     fontWeight: 600,
                     fontSize: 'clamp(0.9rem, 2vw, 1.125rem)',
@@ -228,7 +228,7 @@ export default function Banner() {
                 <p 
                   className="fw-semibold mb-0" 
                   style={{ 
-                    color: '#2563eb',
+                    color: '#0070AD',
                     fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
                     fontStyle: 'italic'
                   }}
