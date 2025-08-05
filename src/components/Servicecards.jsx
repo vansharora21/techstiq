@@ -157,7 +157,7 @@ function ServiceCard({
 
 export default function ServiceCards() {
   return (
-    <div className="container py-5">
+    <div className="container py-5" style={{maxWidth: '100%', background: 'linear-gradient(135deg, rgb(224, 247, 250), rgb(224, 236, 252) 70%, rgb(240, 251, 252))'}}>
       <div className="row g-4">
         {SERVICES.map((service, idx) => (
           <ServiceCard key={service.name} {...service} />

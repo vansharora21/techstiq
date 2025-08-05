@@ -16,7 +16,6 @@ const themes = {
     dropdownHoverBg: "#e0f7fa",
     dropdownHoverText: "#0070AD",
     mobileMenuBackground: "linear-gradient(180deg, #0070AD 0%, #005680 100%)",
-    
     hoverColor: "#e0f7fa",
     backdropBlur: "blur(10px)",
   },
@@ -89,24 +88,26 @@ const ThemeSwitchIcon = ({ color = "#fff" }) => (
 
 // Enhanced Dropdown Component
 const DropdownMenu = ({ items, isVisible, theme }) => (
-  <div style={{
-    position: "absolute",
-    top: "calc(100% + 12px)",
-    left: 0,
-    background: theme.dropdownBackground,
-    borderRadius: 16,
-    boxShadow: "0 12px 28px rgba(0, 0, 0, 0.15)",
-    zIndex: 200,
-    minWidth: 320,
-    padding: "12px 0",
-    fontFamily: "'Lexend Deca', sans-serif",
-    border: "1px solid rgba(0, 0, 0, 0.1)",
-    opacity: isVisible ? 1 : 0,
-    visibility: isVisible ? "visible" : "hidden",
-    transform: isVisible ? "translateY(0)" : "translateY(-8px)",
-    transition: "opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease",
-  }}>
-    {items.map(item => (
+  <div
+    style={{
+      position: "absolute",
+      top: "calc(100% + 12px)",
+      left: 0,
+      background: theme.dropdownBackground,
+      borderRadius: 16,
+      boxShadow: "0 12px 28px rgba(0, 0, 0, 0.15)",
+      zIndex: 200,
+      minWidth: 320,
+      padding: "12px 0",
+      fontFamily: "'Lexend Deca', sans-serif",
+      border: "1px solid rgba(0, 0, 0, 0.1)",
+      opacity: isVisible ? 1 : 0,
+      visibility: isVisible ? "visible" : "hidden",
+      transform: isVisible ? "translateY(0)" : "translateY(-8px)",
+      transition: "opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease",
+    }}
+  >
+    {items.map((item) => (
       <Link
         to={item.path}
         key={item.name}
@@ -134,41 +135,55 @@ const DropdownMenu = ({ items, isVisible, theme }) => (
 function DropdownMobile({ label, open, onClick, items, closeMenu, theme }) {
   return (
     <div style={{ width: "100%" }}>
-      <button style={{
-        ...dropdownBtnMobileStyle,
-        color: theme.navText,
-        borderBottom: `1px solid rgba(255,255,255,0.1)`
-      }} onClick={onClick}>
+      <button
+        style={{
+          ...dropdownBtnMobileStyle,
+          color: theme.navText,
+          borderBottom: `1px solid rgba(255,255,255,0.1)`,
+        }}
+        onClick={onClick}
+      >
         <span>{label}</span>
-        <div style={{
-          transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
-          transition: 'transform 0.2s ease'
-        }}>
+        <div
+          style={{
+            transform: open ? "rotate(180deg)" : "rotate(0deg)",
+            transition: "transform 0.2s ease",
+          }}
+        >
           <ChevronDownIcon color={theme.navText} />
         </div>
       </button>
-      <div style={{
-        maxHeight: open ? '400px' : '0',
-        overflow: 'hidden',
-        transition: 'max-height 0.3s ease-in-out'
-      }}>
-        <div style={{
-          background: "rgba(255,255,255,0.95)",
-          backdropFilter: "blur(10px)",
-          margin: "8px 16px",
-          borderRadius: 12,
-          boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-          overflow: "hidden"
-        }}>
+      <div
+        style={{
+          maxHeight: open ? "400px" : "0",
+          overflow: "hidden",
+          transition: "max-height 0.3s ease-in-out",
+        }}
+      >
+        <div
+          style={{
+            background: "rgba(255,255,255,0.95)",
+            backdropFilter: "blur(10px)",
+            margin: "8px 16px",
+            borderRadius: 12,
+            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+            overflow: "hidden",
+          }}
+        >
           {items.map((item) => (
-            <Link to={item.path} style={{
-              display: "block",
-              padding: "16px 20px",
-              textDecoration: "none",
-              color: "#222",
-              borderBottom: "1px solid rgba(0,0,0,0.05)",
-              transition: "background-color 0.2s ease"
-            }} key={item.name} onClick={closeMenu}>
+            <Link
+              to={item.path}
+              style={{
+                display: "block",
+                padding: "16px 20px",
+                textDecoration: "none",
+                color: "#222",
+                borderBottom: "1px solid rgba(0,0,0,0.05)",
+                transition: "background-color 0.2s ease",
+              }}
+              key={item.name}
+              onClick={closeMenu}
+            >
               <div style={{ fontWeight: 600, fontSize: 15 }}>{item.name}</div>
               <div style={{ fontSize: 12, color: "#666", marginTop: 2 }}>{item.desc}</div>
             </Link>
@@ -178,6 +193,23 @@ function DropdownMobile({ label, open, onClick, items, closeMenu, theme }) {
     </div>
   );
 }
+
+// Style objects for mobile dropdown
+const dropdownBtnMobileStyle = {
+  fontWeight: 600,
+  fontSize: "clamp(14px, 2vw, 16px)",
+  background: "none",
+  border: "none",
+  cursor: "pointer",
+  display: "flex",
+  alignItems: "center",
+  gap: 6,
+  letterSpacing: 0.02,
+  width: "100%",
+  justifyContent: "space-between",
+  fontSize: 16,
+  padding: "16px 20px",
+};
 
 // Main Navbar Component
 const Navbar = () => {
@@ -197,8 +229,8 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   // Close mobile menu on window resize
@@ -209,8 +241,8 @@ const Navbar = () => {
         setOpenDropdown(null);
       }
     };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const navStyle = {
@@ -225,7 +257,7 @@ const Navbar = () => {
     right: 0,
     zIndex: 1000,
     transition: "all 0.3s ease",
-    minHeight: 64
+    minHeight: 64,
   };
 
   const closeMobileMenu = () => {
@@ -242,33 +274,40 @@ const Navbar = () => {
       {/* Spacer to prevent content jumping */}
       <div style={{ height: 64 }} />
 
-      <header style={navStyle} className="navbar-main">
-        <nav className="container" style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          padding: "0 clamp(16px, 4vw, 24px)",
-          height: 64,
-          position: "relative",
-          maxWidth: "1200px",
-          margin: "0 auto"
-        }}>
+      <header style={navStyle} className="navbar-main" data-theme={themeName}>
+        <nav
+          className="container"
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "0 clamp(16px, 4vw, 24px)",
+            height: 64,
+            position: "relative",
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
           {/* LEFT: Logo + Desktop Navigation */}
           <div style={{ display: "flex", alignItems: "center", flex: 1 }}>
             {/* Logo */}
-            <Link to="/" className="logo" style={{
-              display: "flex",
-              alignItems: "center",
-              height: 48,
-              flexShrink: 0,
-              marginRight: 8
-            }}>
+            <Link
+              to="/"
+              className="logo"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                height: 100,
+                flexShrink: 0,
+                marginRight: 8,
+              }}
+            >
               <img
                 src={logo}
                 alt="Techstiq Logo"
                 style={{
-                  height: 48,
-                  width: 48,
+                  height: 100,
+                  width: 100,
                   objectFit: "contain",
                   borderRadius: 6,
                 }}
@@ -276,155 +315,73 @@ const Navbar = () => {
             </Link>
 
             {/* Desktop Navigation */}
-            <ul className="nav-links desktop-only" style={{
-              display: "none",
-              alignItems: "center",
-              gap: "clamp(16px, 2.5vw, 28px)",
-              marginLeft: "clamp(16px, 4vw, 32px)",
-              listStyle: "none",
-              margin: 0,
-              padding: 0
-            }}>
+            <ul
+              className="nav-links desktop-only"
+              style={{
+                display: "none",
+                alignItems: "center",
+                gap: "clamp(16px, 2.5vw, 28px)",
+                marginLeft: "clamp(16px, 4vw, 32px)",
+                listStyle: "none",
+                margin: 0,
+                padding: 0,
+              }}
+            >
               <li>
-                <Link to="/" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  letterSpacing: 0.02,
-                  textDecoration: "none",
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>Home</Link>
+                <Link
+                  to="/"
+                  style={{
+                    color: theme.navText,
+                    fontWeight: 600,
+                    fontSize: "clamp(14px, 2vw, 16px)",
+                    letterSpacing: 0.02,
+                    textDecoration: "none",
+                    padding: "8px 12px",
+                    borderRadius: 4,
+                    transition: "color 0.2s ease, background-color 0.2s ease",
+                  }}
+                >
+                  Home
+                </Link>
               </li>
 
-              {/* Products dropdown */}
-              {/* <li className="nav-dropdown" style={{ position: "relative" }}
-                  onMouseEnter={() => setOpenDropdown("products")}
-                  onMouseLeave={() => setOpenDropdown(null)}
-              >
-                <button type="button" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  letterSpacing: 0.02,
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>
-                  Products <ChevronDownIcon color={theme.navText} />
-                </button>
-                <DropdownMenu 
-                  items={PRODUCT_SERVICES} 
-                  isVisible={openDropdown === "products"} 
-                  theme={theme} 
-                />
-              </li> */}
+              {/* Add more navigation items here as needed */}
 
-              {/* Solutions dropdown */}
-              {/* <li className="nav-dropdown" style={{ position: "relative" }}
-                  onMouseEnter={() => setOpenDropdown("solutions")}
-                  onMouseLeave={() => setOpenDropdown(null)}
-              >
-                <button type="button" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  letterSpacing: 0.02,
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>
-                  Solutions <ChevronDownIcon color={theme.navText} />
-                </button>
-                <DropdownMenu 
-                  items={SOLUTIONS} 
-                  isVisible={openDropdown === "solutions"} 
-                  theme={theme} 
-                />
-              </li> */}
-
-              {/* Pricing */}
-              {/* <li>
-                <Link to="/pricing" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  letterSpacing: 0.02,
-                  textDecoration: "none",
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>Pricing</Link>
-              </li> */}
-
-              {/* About Us */}
               <li>
-                <Link to="/About-us" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  letterSpacing: 0.02,
-                  textDecoration: "none",
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>About Us</Link>
+                <Link
+                  to="/About-us"
+                  style={{
+                    color: theme.navText,
+                    fontWeight: 600,
+                    fontSize: "clamp(14px, 2vw, 16px)",
+                    letterSpacing: 0.02,
+                    textDecoration: "none",
+                    padding: "8px 12px",
+                    borderRadius: 4,
+                    transition: "color 0.2s ease, background-color 0.2s ease",
+                  }}
+                >
+                  About Us
+                </Link>
               </li>
 
-              {/* Contact Us */}
               <li>
-                <Link to="/Contact-Us" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  letterSpacing: 0.02,
-                  textDecoration: "none",
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>Contact Us</Link>
+                <Link
+                  to="/Contact-Us"
+                  style={{
+                    color: theme.navText,
+                    fontWeight: 600,
+                    fontSize: "clamp(14px, 2vw, 16px)",
+                    letterSpacing: 0.02,
+                    textDecoration: "none",
+                    padding: "8px 12px",
+                    borderRadius: 4,
+                    transition: "color 0.2s ease, background-color 0.2s ease",
+                  }}
+                >
+                  Contact Us
+                </Link>
               </li>
-              {/* Resources dropdown */}
-              {/* <li className="nav-dropdown" style={{ position: "relative" }}
-                onMouseEnter={() => setOpenDropdown("resources")}
-                onMouseLeave={() => setOpenDropdown(null)}
-              >
-                <button type="button" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: "clamp(14px, 2vw, 16px)",
-                  background: "none",
-                  border: "none",
-                  cursor: "pointer",
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 6,
-                  letterSpacing: 0.02,
-                  padding: "8px 12px",
-                  borderRadius: 4,
-                  transition: "color 0.2s ease, background-color 0.2s ease"
-                }}>
-                  Resources <ChevronDownIcon color={theme.navText} />
-                </button>
-                <DropdownMenu
-                  items={RESOURCES}
-                  isVisible={openDropdown === "resources"}
-                  theme={theme}
-                />
-              </li> */}
             </ul>
           </div>
 
@@ -447,7 +404,7 @@ const Navbar = () => {
                 display: "none",
                 alignItems: "center",
                 gap: 6,
-                transition: "all 0.2s ease"
+                transition: "all 0.2s ease",
               }}
               onMouseEnter={(e) => {
                 e.target.style.backgroundColor = "rgba(255,255,255,0.1)";
@@ -461,20 +418,21 @@ const Navbar = () => {
             </button>
 
             {/* Desktop CTA */}
-            <Link to="/Contact-Us" className="desktop-only"
+            <Link
+              to="/Contact-Us"
+              className="desktop-only"
               style={{
-                background: 'white',
-                color: "#0070AD", // Change this to white
+                background: "white",
+                color: "#0070AD",
                 borderRadius: 8,
                 padding: "10px 20px",
                 fontSize: "clamp(14px, 2vw, 15px)",
                 fontWeight: 600,
                 textDecoration: "none",
                 letterSpacing: 0.02,
-                // boxShadow: "0 2px 8px rgba(255, 100, 47, 0.3)",
                 transition: "all 0.2s ease",
                 whiteSpace: "nowrap",
-                display: "none"
+                display: "none",
               }}
               onMouseEnter={(e) => {
                 e.target.style.transform = "translateY(-1px)";
@@ -489,7 +447,8 @@ const Navbar = () => {
             </Link>
 
             {/* Mobile Hamburger */}
-            <button className="mobile-only"
+            <button
+              className="mobile-only"
               aria-label="Toggle navigation menu"
               onClick={() => setMobileMenu(!mobileMenu)}
               style={{
@@ -501,10 +460,10 @@ const Navbar = () => {
                 cursor: "pointer",
                 padding: 8,
                 borderRadius: 4,
-                transition: "background-color 0.2s ease"
+                transition: "background-color 0.2s ease",
               }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = "rgba(255,255,255,0.1)"}
-              onMouseLeave={(e) => e.target.style.backgroundColor = "transparent"}
+              onMouseEnter={(e) => (e.target.style.backgroundColor = "rgba(255,255,255,0.1)")}
+              onMouseLeave={(e) => (e.target.style.backgroundColor = "transparent")}
             >
               {mobileMenu ? <CloseIcon color={theme.navText} /> : <HamburgerIcon color={theme.navText} />}
             </button>
@@ -512,49 +471,56 @@ const Navbar = () => {
         </nav>
 
         {/* Mobile Navigation Menu */}
-        <div className={`mobile-nav-menu ${mobileMenu ? 'open' : ''}`} style={{
-          position: "fixed",
-          top: 0,
-          right: 0,
-          width: "min(100vw, 400px)",
-          height: "100vh",
-          background: theme.mobileMenuBackground,
-          zIndex: 999,
-          overflowY: "auto",
-          WebkitOverflowScrolling: "touch",
-          transform: mobileMenu ? 'translateX(0)' : 'translateX(100%)',
-          visibility: mobileMenu ? 'visible' : 'hidden',
-          transition: 'transform 0.3s ease, visibility 0.3s ease'
-        }}>
-          {/* Mobile Menu Header */}
-          <div style={{
-            position: "sticky",
+        <div
+          className={`mobile-nav-menu ${mobileMenu ? "open" : ""}`}
+          style={{
+            position: "fixed",
             top: 0,
-            background: theme.navBackground,
-            borderBottom: "1px solid rgba(255,255,255,0.1)",
-            padding: "16px 24px",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            zIndex: 10
-          }}>
+            right: 0,
+            width: "min(100vw, 400px)",
+            height: "100vh",
+            background: theme.mobileMenuBackground,
+            zIndex: 999,
+            overflowY: "auto",
+            WebkitOverflowScrolling: "touch",
+            transform: mobileMenu ? "translateX(0)" : "translateX(100%)",
+            visibility: mobileMenu ? "visible" : "hidden",
+            transition: "transform 0.3s ease, visibility 0.3s ease",
+          }}
+        >
+          {/* Mobile Menu Header */}
+          <div
+            style={{
+              position: "sticky",
+              top: 0,
+              background: theme.navBackground,
+              borderBottom: "1px solid rgba(255,255,255,0.1)",
+              padding: "16px 24px",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              zIndex: 10,
+            }}
+          >
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               <img
                 src={logo}
                 alt="Techstiq Logo"
                 style={{
-                  height: 32,
-                  width: 32,
+                  height: 80,
+                  width: 80,
                   objectFit: "contain",
-                  borderRadius: 4
+                  borderRadius: 6,
                 }}
               />
-              <div style={{
-                color: theme.navText,
-                fontSize: 16,
-                fontWeight: 600,
-                letterSpacing: 0.02
-              }}>
+              <div
+                style={{
+                  color: theme.navText,
+                  fontSize: 16,
+                  fontWeight: 600,
+                  letterSpacing: 0.02,
+                }}
+              >
                 Techstiq
               </div>
             </div>
@@ -572,7 +538,7 @@ const Navbar = () => {
                   cursor: "pointer",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
+                  justifyContent: "center",
                 }}
               >
                 <ThemeSwitchIcon color={theme.navText} />
@@ -589,7 +555,7 @@ const Navbar = () => {
                   transition: "background-color 0.2s ease",
                   display: "flex",
                   alignItems: "center",
-                  justifyContent: "center"
+                  justifyContent: "center",
                 }}
               >
                 <CloseIcon color={theme.navText} />
@@ -598,20 +564,24 @@ const Navbar = () => {
           </div>
 
           {/* Mobile Menu Content */}
-          <nav style={{
-            width: "100%",
-            padding: "24px",
-            paddingTop: "16px"
-          }}>
-            <ul style={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "stretch",
-              margin: 0,
-              padding: 0,
-              listStyle: "none",
-              gap: 8
-            }}>
+          <nav
+            style={{
+              width: "100%",
+              padding: "24px",
+              paddingTop: "16px",
+            }}
+          >
+            <ul
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "stretch",
+                margin: 0,
+                padding: 0,
+                listStyle: "none",
+                gap: 8,
+              }}
+            >
               {/* Mobile Dropdowns */}
               <li style={{ width: "100%" }}>
                 <DropdownMobile
@@ -644,66 +614,80 @@ const Navbar = () => {
                 />
               </li>
               <li style={{ width: "100%" }}>
-                <Link to="/pricing" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  textDecoration: "none",
-                  padding: "16px 20px",
-                  display: "block",
-                  borderBottom: "1px solid rgba(255,255,255,0.1)",
-                  transition: "background-color 0.2s ease"
-                }} onClick={closeMobileMenu}>
+                <Link
+                  to="/pricing"
+                  style={{
+                    color: theme.navText,
+                    fontWeight: 600,
+                    fontSize: 16,
+                    textDecoration: "none",
+                    padding: "16px 20px",
+                    display: "block",
+                    borderBottom: "1px solid rgba(255,255,255,0.1)",
+                    transition: "background-color 0.2s ease",
+                  }}
+                  onClick={closeMobileMenu}
+                >
                   Pricing
                 </Link>
               </li>
-
               <li style={{ width: "100%" }}>
-                <Link to="/about" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  textDecoration: "none",
-                  padding: "16px 20px",
-                  display: "block",
-                  borderBottom: "1px solid rgba(255,255,255,0.1)",
-                  transition: "background-color 0.2s ease"
-                }} onClick={closeMobileMenu}>
+                <Link
+                  to="/about"
+                  style={{
+                    color: theme.navText,
+                    fontWeight: 600,
+                    fontSize: 16,
+                    textDecoration: "none",
+                    padding: "16px 20px",
+                    display: "block",
+                    borderBottom: "1px solid rgba(255,255,255,0.1)",
+                    transition: "background-color 0.2s ease",
+                  }}
+                  onClick={closeMobileMenu}
+                >
                   About Us
                 </Link>
               </li>
-
               <li style={{ width: "100%" }}>
-                <Link to="/contact" style={{
-                  color: theme.navText,
-                  fontWeight: 600,
-                  fontSize: 16,
-                  textDecoration: "none",
-                  padding: "16px 20px",
-                  display: "block",
-                  borderBottom: "1px solid rgba(255,255,255,0.1)",
-                  transition: "background-color 0.2s ease"
-                }} onClick={closeMobileMenu}>
+                <Link
+                  to="/contact"
+                  style={{
+                    color: theme.navText,
+                    fontWeight: 600,
+                    fontSize: 16,
+                    textDecoration: "none",
+                    padding: "16px 20px",
+                    display: "block",
+                    borderBottom: "1px solid rgba(255,255,255,0.1)",
+                    transition: "background-color 0.2s ease",
+                  }}
+                  onClick={closeMobileMenu}
+                >
                   Contact Us
                 </Link>
               </li>
 
               {/* Mobile CTA */}
               <li style={{ width: "100%", marginTop: 24 }}>
-                <Link to="/contact" style={{
-                  background: theme.ctaGradient,
-                  color: "#fff",
-                  borderRadius: 12,
-                  padding: "16px 24px",
-                  fontSize: 16,
-                  fontWeight: 700,
-                  textDecoration: "none",
-                  textAlign: "center",
-                  display: "block",
-                  margin: "0 16px",
-                  boxShadow: "0 4px 16px rgba(255, 100, 47, 0.3)",
-                  transition: "all 0.2s ease"
-                }} onClick={closeMobileMenu}>
+                <Link
+                  to="/contact"
+                  style={{
+                    background: theme.ctaGradient,
+                    color: "#fff",
+                    borderRadius: 12,
+                    padding: "16px 24px",
+                    fontSize: 16,
+                    fontWeight: 700,
+                    textDecoration: "none",
+                    textAlign: "center",
+                    display: "block",
+                    margin: "0 16px",
+                    boxShadow: "0 4px 16px rgba(255, 100, 47, 0.3)",
+                    transition: "all 0.2s ease",
+                  }}
+                  onClick={closeMobileMenu}
+                >
                   Get Started
                 </Link>
               </li>
@@ -715,13 +699,13 @@ const Navbar = () => {
         {mobileMenu && (
           <div
             style={{
-              position: 'fixed',
+              position: "fixed",
               top: 0,
               left: 0,
-              width: '100vw',
-              height: '100vh',
-              background: 'rgba(0,0,0,0.5)',
-              zIndex: -1
+              width: "100vw",
+              height: "100vh",
+              background: "rgba(0,0,0,0.5)",
+              zIndex: -1,
             }}
             onClick={closeMobileMenu}
           />
@@ -730,98 +714,92 @@ const Navbar = () => {
 
       {/* Enhanced Responsive CSS */}
       <style>{`
-      .nav-links li a {
-  position: relative;
-  text-decoration: none;
-}
+        .nav-links li a {
+          position: relative;
+          text-decoration: none;
+        }
 
-.nav-links li a::after {
-  content: "";
-  position: absolute;
-  bottom: 3px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: #41c3c9;
-  transition: width 0.3s ease;
-}
+        .nav-links li a::after {
+          content: "";
+          position: absolute;
+          bottom: 3px;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background-color: #41c3c9;
+          transition: width 0.3s ease;
+        }
 
-.nav-links li a:hover::after {
-  width: 100%;
-}
+        .nav-links li a:hover::after {
+          width: 100%;
+        }
 
         @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca:wght@400;600;700&display=swap');
-        
+
         .navbar-main { 
           font-family: 'Lexend Deca', -apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif; 
         }
-        
+
         .desktop-only { 
           display: none !important; 
         }
-        
+
         .mobile-only { 
           display: flex !important; 
         }
-        
+
         .mobile-nav-menu {
           transition: transform 0.3s ease, visibility 0.3s ease;
         }
-        
+
         .mobile-nav-menu.open {
           transform: translateX(0) !important;
           visibility: visible !important;
         }
-        
+
         /* Enhanced dropdown hover effects */
         .dropdown-item:hover {
           background-color: ${themes.light.dropdownHoverBg} !important;
           color: ${themes.light.dropdownHoverText} !important;
           box-shadow: 0 2px 8px rgba(0, 112, 173, 0.2) !important;
         }
-        
+
         /* Dark theme dropdown hover */
         .navbar-main[data-theme="dark"] .dropdown-item:hover {
           background-color: ${themes.dark.dropdownHoverBg} !important;
           color: ${themes.dark.dropdownHoverText} !important;
           box-shadow: 0 2px 8px rgba(51, 153, 255, 0.2) !important;
         }
-        
+
         /* Logo responsive adjustments */
         @media (max-width: 480px) {
-         .logo img {
-  display: block;
-  height: 48px;
-  width: 48px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.13), 0 0px 0 #fff;
-  background: #fff;
-  border: 2.5px solid #fff;
-  object-fit: contain;
-  transition: box-shadow 0.18s cubic-bezier(.25,.8,.25,1);
-}
-
-.navbar-main[data-theme="dark"] .logo img {
-  background: #001f3f;
-  border-color: #001f3f;
-}
-.logo img:hover {
-  box-shadow: 0 8px 24px rgba(0,112,173,0.18), 0 0px 0 #fff;
-}
-
-        }
-        
-        /* Tablet and Desktop */
-        @media (min-width: 768px) {
-          .nav-links {
-            gap: clamp(20px, 2.5vw, 28px) !important;
-          }
           .logo img {
-            height: 52px !important;
-            width: 52px !important;
+            display: block;
+            height: 80px !important;
+            width: 80px !important;
+            border-radius: 10px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+            background: #fff;
+            border: 2.5px solid #fff;
+            object-fit: contain;
+            transition: box-shadow 0.18s cubic-bezier(.25,.8,.25,1);
+          }
+          .navbar-main[data-theme="dark"] .logo img {
+            background: #001f3f;
+            border-color: #001f3f;
+          }
+          .logo img:hover {
+            box-shadow: 0 12px 36px rgba(0,112,173,0.3);
           }
         }
-        
+
+        @media (min-width: 768px) {
+          .logo img {
+            height: 90px !important;
+            width: 90px !important;
+          }
+        }
+
         @media (min-width: 1024px) {
           .desktop-only { 
             display: inline-flex !important; 
@@ -833,28 +811,25 @@ const Navbar = () => {
           .mobile-nav-menu { 
             display: none !important; 
           }
+          .logo img {
+            height: 100px !important;
+            width: 100px !important;
+          }
         }
-        
-        /* Large screens */
+
         @media (min-width: 1200px) {
           .nav-links {
             gap: 28px !important;
             margin-left: 48px !important;
           }
-          .logo img {
-            height: 56px !important;
-            width: 56px !important;
-          }
         }
-        
-        /* Extra large screens */
+
         @media (min-width: 1400px) {
           .nav-links {
             gap: 32px !important;
           }
         }
-        
-        /* Hover effects for desktop */
+
         @media (hover: hover) {
           .nav-dropdown:hover button {
             color: ${themes.light.hoverColor};
@@ -863,23 +838,6 @@ const Navbar = () => {
       `}</style>
     </>
   );
-};
-
-// Style objects for mobile dropdown
-const dropdownBtnMobileStyle = {
-  fontWeight: 600,
-  fontSize: "clamp(14px, 2vw, 16px)",
-  background: "none",
-  border: "none",
-  cursor: "pointer",
-  display: "flex",
-  alignItems: "center",
-  gap: 6,
-  letterSpacing: 0.02,
-  width: "100%",
-  justifyContent: "space-between",
-  fontSize: 16,
-  padding: "16px 20px",
 };
 
 export default Navbar;

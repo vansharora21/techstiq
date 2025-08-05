@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import logo from "./Techstiq-Logo.png";
 
 export default function Footer() {
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -6,9 +7,6 @@ export default function Footer() {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [newsletterEmail, setNewsletterEmail] = useState("");
   const [animateStats, setAnimateStats] = useState(false);
-
-  // Real-time clock update
-
 
   // Intersection Observer for animations
   useEffect(() => {
@@ -53,7 +51,7 @@ export default function Footer() {
     { number: "10K+", label: "Happy Clients", icon: "👥" },
     { number: "500+", label: "Projects Done", icon: "🚀" },
     { number: "99%", label: "Success Rate", icon: "✨" },
-    { number: "24/7", label: "Support", icon: "🛟" }
+    { number: "24/7", label: "Support", icon: "🛟" },
   ];
 
   return (
@@ -69,7 +67,7 @@ export default function Footer() {
         overflow: "hidden",
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
         opacity: isVisible ? 1 : 0,
-        transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)"
+        transition: "all 0.8s cubic-bezier(0.4, 0, 0.2, 1)",
       }}
     >
       {/* Animated Background Elements */}
@@ -85,7 +83,7 @@ export default function Footer() {
             radial-gradient(circle at 80% 20%, rgba(168, 207, 255, 0.15) 0%, transparent 50%),
             radial-gradient(circle at 40% 80%, rgba(218, 232, 252, 0.2) 0%, transparent 50%)
           `,
-          animation: "float 6s ease-in-out infinite"
+          animation: "float 6s ease-in-out infinite",
         }}
       ></div>
 
@@ -103,7 +101,7 @@ export default function Footer() {
               left: Math.random() * 100 + "%",
               top: Math.random() * 100 + "%",
               animation: `particle-float ${Math.random() * 3 + 2}s linear infinite`,
-              animationDelay: Math.random() * 2 + "s"
+              animationDelay: Math.random() * 2 + "s",
             }}
           />
         ))}
@@ -122,7 +120,7 @@ export default function Footer() {
                   border: "1px solid rgba(66, 139, 255, 0.2)",
                   fontSize: "0.9rem",
                   fontWeight: "600",
-                  color: "#428bff"
+                  color: "#428bff",
                 }}
               >
                 🎯 Trusted by Industry Leaders
@@ -141,7 +139,7 @@ export default function Footer() {
                       transform: animateStats ? "translateY(0)" : "translateY(30px)",
                       opacity: animateStats ? 1 : 0,
                       transitionDelay: `${index * 0.1}s`,
-                      cursor: "pointer"
+                      cursor: "pointer",
                     }}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.transform = "translateY(-8px) scale(1.02)";
@@ -157,9 +155,7 @@ export default function Footer() {
                     <div style={{ fontSize: "2rem", fontWeight: "bold", color: "#428bff", marginBottom: "0.5rem" }}>
                       {stat.number}
                     </div>
-                    <div style={{ fontSize: "0.9rem", color: "#5a6b8c", fontWeight: "500" }}>
-                      {stat.label}
-                    </div>
+                    <div style={{ fontSize: "0.9rem", color: "#5a6b8c", fontWeight: "500" }}>{stat.label}</div>
                   </div>
                 </div>
               ))}
@@ -170,48 +166,64 @@ export default function Footer() {
 
       {/* Main Content */}
       <div className="container py-4" style={{ position: "relative", zIndex: 2 }}>
-        <div className="row g-5 align-items-start">
-          {/* Left Column - Company Info & Social */}
-          <div className="col-lg-4 col-md-6">
-            {/* Company Logo/Brand */}
-            <div className="mb-4">
-              <div
-                className="d-flex align-items-center mb-3"
+        <div className="row g-3 align-items-center justify-content-between flex-wrap">
+          {/* Left: Logo and description with "Connect With Us" heading */}
+          <div
+            className="col-lg-auto col-md-12 d-flex flex-column align-items-start gap-2"
+            style={{ minWidth: 320 }}
+          >
+            <div className="d-flex align-items-center gap-3 w-100">
+              <img
+                src={logo}
+                alt="Techstiq Logo"
+                style={{ height: "38px", width: "auto", objectFit: "contain", display: "block" }}
+              />
+              {/* <p
+                className="mb-0"
                 style={{
-                  fontSize: "1.8rem",
-                  fontWeight: "bold",
-                  background: "linear-gradient(135deg, #428bff 0%, #1a61ff 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent",
-                  backgroundClip: "text"
+                  color: "#5a6b8c",
+                  fontSize: "0.95rem",
+                  lineHeight: "1.6",
+                  whiteSpace: "normal",
                 }}
               >
-                🚀 TECHSTIQ
-              </div>
-              <p style={{ color: "#5a6b8c", fontSize: "0.95rem", lineHeight: "1.6" }}>
                 Transforming ideas into digital reality with cutting-edge technology and innovative solutions.
-              </p>
+              </p> */}
             </div>
-
-            {/* Social Media */}
-            <h6 className="fw-bold mb-3" style={{ color: "#1a2a52" }}>
+            <h6
+              style={{
+                color: "#1a2a52",
+                fontWeight: "600",
+                margin: "0.5rem 0 0 0",
+                fontSize: "1rem",
+                userSelect: "none",
+              }}
+            >
               Connect With Us
             </h6>
-            <div className="d-flex gap-2 mb-4 flex-wrap">
+            {/* Social Icons */}
+            <div className="d-flex gap-2 flex-wrap">
               {[
                 { icon: "fab fa-linkedin-in", color: "#0077b5", url: "https://www.linkedin.com/company/techstiq/", name: "LinkedIn" },
                 { icon: "fab fa-instagram", color: "#E4405F", url: "https://www.instagram.com/techstiq?utm_source=qr&igsh=ejRiaTIyajVmc2Jr", name: "Instagram" },
                 { icon: "fab fa-facebook-f", color: "#1877F2", url: "https://www.facebook.com/share/1CNEYPbsXN/?mibextid=qi2Omg", name: "Facebook" },
                 { icon: "fab fa-x", color: "#000000", url: "https://x.com/Thetechstiq?t=M3RquO1wgZ2uTcoezu712Q&s=08", name: "Twitter" },
                 { icon: "fab fa-youtube", color: "#FF0000", url: "https://youtube.com/@techstiq?si=JCdJ8vi_XcQXlJXc", name: "YouTube" },
-                { icon: "fas fa-envelope", color: "#D44638", url: "#", name: "Email" }
+                { icon: "fas fa-envelope", color: "#D44638", url: "#", name: "Email" },
               ].map((social, index) => (
                 <a
                   key={index}
                   href={social.name === "Email" ? "#" : social.url}
                   target={social.name === "Email" ? "_self" : "_blank"}
                   rel="noopener noreferrer"
-                  onClick={social.name === "Email" ? (e) => { e.preventDefault(); handleEmailClick(); } : undefined}
+                  onClick={
+                    social.name === "Email"
+                      ? (e) => {
+                          e.preventDefault();
+                          handleEmailClick();
+                        }
+                      : undefined
+                  }
                   className="text-decoration-none"
                   style={{
                     background: "rgba(255, 255, 255, 0.9)",
@@ -221,139 +233,44 @@ export default function Footer() {
                     fontSize: "1.1rem",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     border: "1px solid rgba(66, 139, 255, 0.1)",
-                    boxShadow: "0 2px 8px rgba(0,0,0,0.1)"
+                    boxShadow: "0 2px 8px rgba(0,0,0,0.1)",
+                    userSelect: "none",
                   }}
                   onMouseEnter={(e) => {
-                    e.target.style.transform = "translateY(-3px) rotate(5deg)";
-                    e.target.style.boxShadow = `0 8px 25px ${social.color}40`;
-                    e.target.style.background = "rgba(255, 255, 255, 1)";
-                    console.log(`${social.name} hovered`);
+                    e.currentTarget.style.transform = "translateY(-3px) rotate(5deg)";
+                    e.currentTarget.style.boxShadow = `0 8px 25px ${social.color}40`;
+                    e.currentTarget.style.background = "rgba(255, 255, 255, 1)";
                   }}
                   onMouseLeave={(e) => {
-                    e.target.style.transform = "translateY(0) rotate(0deg)";
-                    e.target.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)";
-                    e.target.style.background = "rgba(255, 255, 255, 0.9)";
+                    e.currentTarget.style.transform = "translateY(0) rotate(0deg)";
+                    e.currentTarget.style.boxShadow = "0 2px 8px rgba(0,0,0,0.1)";
+                    e.currentTarget.style.background = "rgba(255, 255, 255, 0.9)";
                   }}
                 >
                   <i className={social.icon}></i>
                 </a>
               ))}
             </div>
-
-
           </div>
 
-          {/* Middle Column - Newsletter */}
-          {/* <div className="col-lg-4 col-md-6">
-            <div
-              className="p-4 rounded-4 h-100"
-              style={{
-                background: "rgba(255, 255, 255, 0.8)",
-                backdropFilter: "blur(15px)",
-                border: "1px solid rgba(66, 139, 255, 0.2)",
-                boxShadow: "0 8px 32px rgba(0,0,0,0.1)"
-              }}
-            >
-              <div className="text-center mb-4">
-                <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>📧</div>
-                <h5 style={{ color: "#1a2a52", fontWeight: "700", marginBottom: "0.5rem" }}>
-                  Stay Updated
-                </h5>
-                <p style={{ color: "#5a6b8c", fontSize: "0.9rem", margin: 0 }}>
-                  Get the latest tech insights and updates delivered to your inbox
-                </p>
-              </div>
-
-              <form onSubmit={handleNewsletterSubmit} className="mb-4">
-                <div className="mb-3">
-                  <input
-                    type="email"
-                    className="form-control border-0"
-                    placeholder="Enter your email address"
-                    value={newsletterEmail}
-                    onChange={(e) => {
-                      setNewsletterEmail(e.target.value);
-                      console.log("Newsletter email changed:", e.target.value);
-                    }}
-                    style={{
-                      background: "#f8fbff",
-                      padding: "12px 16px",
-                      borderRadius: "12px",
-                      border: "2px solid transparent",
-                      fontSize: "0.95rem",
-                      transition: "all 0.3s ease"
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.border = "2px solid #428bff";
-                      e.target.style.background = "#ffffff";
-                      console.log("Newsletter input focused");
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.border = "2px solid transparent";
-                      e.target.style.background = "#f8fbff";
-                    }}
-                    required
-                  />
-                </div>
-                <button
-                  type="submit"
-                  className="btn w-100 fw-semibold"
-                  style={{
-                    background: "linear-gradient(135deg, #428bff 0%, #1a61ff 100%)",
-                    border: "none",
-                    color: "#ffffff",
-                    borderRadius: "12px",
-                    padding: "12px",
-                    fontSize: "0.95rem",
-                    transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)"
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.transform = "translateY(-2px)";
-                    e.target.style.boxShadow = "0 8px 25px rgba(66, 139, 255, 0.4)";
-                    console.log("Newsletter subscribe button hovered");
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.transform = "translateY(0)";
-                    e.target.style.boxShadow = "none";
-                  }}
-                >
-                  🚀 Subscribe to Newsletter
-                </button>
-              </form>
-
-              <div className="text-center">
-                <small style={{ color: "#5a6b8c", fontSize: "0.8rem" }}>
-                  📊 Join 10,000+ tech enthusiasts already subscribed
-                </small>
-              </div>
-            </div>
-          </div> */}
-
-          {/* Right Column - WhatsApp Updates */}
-          <div className="col-lg-4 col-md-12">
+          {/* Right: WhatsApp updates */}
+          <div className="col-lg-auto col-md-12">
             <div
               className="p-4 rounded-4 h-100"
               style={{
                 background: "linear-gradient(135deg, rgba(37, 211, 102, 0.1) 0%, rgba(25, 169, 82, 0.1) 100%)",
                 border: "1px solid rgba(37, 211, 102, 0.3)",
-                backdropFilter: "blur(10px)"
+                backdropFilter: "blur(10px)",
+                minWidth: "280px",
               }}
             >
               <div className="d-flex align-items-center mb-3">
-                <i 
-                  className="fab fa-whatsapp me-2" 
-                  style={{ color: "#25D366", fontSize: "1.8rem" }}
-                ></i>
+                <i className="fab fa-whatsapp me-2" style={{ color: "#25D366", fontSize: "1.8rem" }}></i>
                 <div>
-                  <h6 style={{ color: "#1a2a52", fontSize: "1.1rem", fontWeight: "600", margin: 0 }}>
-                    WhatsApp Updates
-                  </h6>
-                  <small style={{ color: "#5a6b8c", fontSize: "0.85rem" }}>
-                    Get instant notifications
-                  </small>
+                  <h6 style={{ color: "#1a2a52", fontSize: "1.1rem", fontWeight: "600", margin: 0 }}>WhatsApp Updates</h6>
+                  <small style={{ color: "#5a6b8c", fontSize: "0.85rem" }}>Get instant notifications</small>
                 </div>
               </div>
-
               <form onSubmit={handleSubmit} className="d-flex gap-2 mb-3">
                 <div className="flex-grow-1 position-relative">
                   <span
@@ -364,7 +281,7 @@ export default function Footer() {
                       transform: "translateY(-50%)",
                       color: "#5a6b8c",
                       fontSize: "0.9rem",
-                      zIndex: 2
+                      zIndex: 2,
                     }}
                   >
                     🇮🇳 +
@@ -374,10 +291,7 @@ export default function Footer() {
                     className="form-control border-0"
                     placeholder="Enter Phone No"
                     value={phoneNumber}
-                    onChange={(e) => {
-                      setPhoneNumber(e.target.value);
-                      console.log("Phone number input changed:", e.target.value);
-                    }}
+                    onChange={(e) => setPhoneNumber(e.target.value)}
                     style={{
                       background: "#ffffff",
                       color: "#1a2a52",
@@ -389,12 +303,11 @@ export default function Footer() {
                       border: "2px solid rgba(37, 211, 102, 0.2)",
                       outline: "none",
                       fontSize: "0.95rem",
-                      transition: "all 0.3s ease"
+                      transition: "all 0.3s ease",
                     }}
                     onFocus={(e) => {
                       e.target.style.border = "2px solid #25D366";
                       e.target.style.boxShadow = "0 0 0 3px rgba(37, 211, 102, 0.1)";
-                      console.log("Phone input focused");
                     }}
                     onBlur={(e) => {
                       e.target.style.border = "2px solid rgba(37, 211, 102, 0.2)";
@@ -412,12 +325,11 @@ export default function Footer() {
                     borderRadius: "12px",
                     transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
                     fontSize: "0.95rem",
-                    minWidth: "100px"
+                    minWidth: "100px",
                   }}
                   onMouseEnter={(e) => {
                     e.target.style.transform = "translateY(-2px) scale(1.05)";
                     e.target.style.boxShadow = "0 8px 25px rgba(37, 211, 102, 0.4)";
-                    console.log("Submit button hovered");
                   }}
                   onMouseLeave={(e) => {
                     e.target.style.transform = "translateY(0) scale(1)";
@@ -427,7 +339,6 @@ export default function Footer() {
                   Submit
                 </button>
               </form>
-
               <div className="text-center">
                 <small style={{ color: "#5a6b8c", fontSize: "0.8rem" }}>
                   💬 Get real-time project updates & support
@@ -436,117 +347,51 @@ export default function Footer() {
             </div>
           </div>
         </div>
-
-        {/* Bottom Section */}
-        <div 
-          className="row mt-5 pt-4"
-          style={{ 
-            borderTop: "1px solid rgba(66, 139, 255, 0.2)",
-            background: "rgba(255, 255, 255, 0.3)",
-            borderRadius: "20px",
-            margin: "2rem -15px 0 -15px",
-            padding: "2rem 15px 1rem 15px"
-          }}
-        >
-          <div className="col-md-6 text-md-start text-center">
-            <p className="mb-2" style={{ color: "#1a2a52", fontSize: "0.9rem", fontWeight: "500" }}>
-              © 2025 Techstiq Labs. All rights reserved.
-            </p>
-            <small style={{ color: "#5a6b8c", fontSize: "0.8rem" }}>
-              🚀 Powered by Innovation • 🔒 Built with Security • ⚡ Optimized for Performance
-            </small>
-          </div>
-          <div className="col-md-6 text-md-end text-center mt-3 mt-md-0">
-            <div className="d-flex justify-content-md-end justify-content-center gap-3">
-              <a href="#" style={{ color: "#5a6b8c", fontSize: "0.85rem", textDecoration: "none" }}>Privacy Policy</a>
-              <a href="#" style={{ color: "#5a6b8c", fontSize: "0.85rem", textDecoration: "none" }}>Terms of Service</a>
-              <a href="#" style={{ color: "#5a6b8c", fontSize: "0.85rem", textDecoration: "none" }}>Cookie Policy</a>
-            </div>
-          </div>
-        </div>
       </div>
-
-      {/* Enhanced Floating Agent */}
-      {/* <div className="position-fixed" style={{ bottom: "20px", right: "20px", zIndex: 1000 }}>
-        <div
-          className="d-flex align-items-center p-3 rounded-pill"
-          style={{
-            background: "linear-gradient(135deg, #428bff 0%, #1a61ff 100%)",
-            color: "#ffffff",
-            boxShadow: "0 8px 32px rgba(66, 139, 255, 0.4)",
-            cursor: "pointer",
-            transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-            border: "2px solid rgba(255, 255, 255, 0.2)"
-          }}
-          onMouseEnter={(e) => {
-            e.target.style.transform = "translateY(-5px) scale(1.05)";
-            e.target.style.boxShadow = "0 15px 45px rgba(66, 139, 255, 0.6)";
-            console.log("Techstiq Agent hovered");
-          }}
-          onMouseLeave={(e) => {
-            e.target.style.transform = "translateY(0) scale(1)";
-            e.target.style.boxShadow = "0 8px 32px rgba(66, 139, 255, 0.4)";
-          }}
-          onClick={() => console.log("Techstiq Agent clicked")}
-        >
-          <div
-            className="rounded-circle me-3"
-            style={{
-              width: "45px",
-              height: "45px",
-              background: "rgba(255,255,255,0.2)",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-              fontSize: "1.2rem"
-            }}
-          >
-            🤖
-          </div>
-          <div>
-            <div style={{ fontSize: "0.95rem", fontWeight: "700" }}>
-              AI Assistant
-            </div>
-            <div style={{ fontSize: "0.8rem", opacity: 0.9 }}>
-              Techstiq Support
-            </div>
-          </div>
-          <div className="ms-2">
-            <div
-              style={{
-                width: "10px",
-                height: "10px",
-                background: "#4ade80",
-                borderRadius: "50%",
-                animation: "pulse 2s infinite"
-              }}
-            ></div>
-          </div>
-        </div>
-      </div> */}
 
       {/* CSS Animations */}
       <style jsx>{`
         @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-10px) rotate(1deg); }
+          0%, 100% {
+            transform: translateY(0px) rotate(0deg);
+          }
+          50% {
+            transform: translateY(-10px) rotate(1deg);
+          }
         }
-        
         @keyframes particle-float {
-          0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
-          10% { opacity: 1; }
-          90% { opacity: 1; }
-          100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+          0% {
+            transform: translateY(0px) rotate(0deg);
+            opacity: 0;
+          }
+          10% {
+            opacity: 1;
+          }
+          90% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateY(-100px) rotate(360deg);
+            opacity: 0;
+          }
         }
-        
         @keyframes pulse {
-          0%, 100% { opacity: 1; transform: scale(1); }
-          50% { opacity: 0.5; transform: scale(1.2); }
+          0%, 100% {
+            opacity: 1;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.5;
+            transform: scale(1.2);
+          }
         }
-        
         @keyframes gradient-shift {
-          0%, 100% { background-position: 0% 50%; }
-          50% { background-position: 100% 50%; }
+          0%, 100% {
+            background-position: 0% 50%;
+          }
+          50% {
+            background-position: 100% 50%;
+          }
         }
       `}</style>
     </footer>

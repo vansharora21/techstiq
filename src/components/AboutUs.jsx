@@ -226,7 +226,7 @@ function AboutUsPage() {
       fontFamily: "'Open Sans', sans-serif",
       color: '#222',
       background: '#f6fafd',
-      maxWidth: '1200px',
+      maxWidth: '100%',
       margin: '0 auto',
       padding: isMobile ? '0 0.5rem' : '0 1rem',
       overflow: 'hidden'

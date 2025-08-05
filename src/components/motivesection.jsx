@@ -15,7 +15,7 @@ const DigitalTransformationBanner = () => {
     bannerContainer: {
       background: 'linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 50%, #81d4fa 100%)',
       padding: 'clamp(40px, 8vw, 60px) clamp(20px, 5vw, 40px)',
-      borderRadius: 'clamp(12px, 3vw, 20px)',
+      // borderRadius: 'clamp(12px, 3vw, 20px)',
       position: 'relative',
       overflow: 'hidden',
       minHeight: 'clamp(250px, 50vh, 400px)',
