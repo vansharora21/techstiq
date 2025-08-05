@@ -82,8 +82,7 @@ function ServiceCard({
   trademark,
   description,
   imageUrl,
-  features,
-  learnMoreUrl
+  features
 }) {
   return (
     <div
@@ -96,13 +95,22 @@ function ServiceCard({
       <div
         className="card shadow-lg w-100 mb-4 border-0"
         style={{
-          background: "linear-gradient(120deg,#e3f0fd 0%, #1976d2 100%)",
-          color: "#283044",
+          background: "linear-gradient(135deg, rgba(0, 112, 173, 0.1) 0%, rgba(189, 226, 254, 0.3) 50%, rgba(255, 255, 255, 0.9) 100%)",
+          color: "#2c3e50",
           borderRadius: "1.2rem",
-          transition: "transform 0.3s cubic-bezier(.2,.65,.41,.91),box-shadow 0.3s"
+          transition: "transform 0.3s cubic-bezier(.2,.65,.41,.91), box-shadow 0.3s",
+          boxShadow: "0 8px 32px rgba(0, 112, 173, 0.15)",
+          backdropFilter: "blur(10px)",
+          border: "1px solid rgba(0, 112, 173, 0.1)"
         }}
-        onMouseEnter={e => e.currentTarget.style.transform = "translateY(-8px) scale(1.04)"}
-        onMouseLeave={e => e.currentTarget.style.transform = ""}
+        onMouseEnter={e => {
+          e.currentTarget.style.transform = "translateY(-8px) scale(1.04)";
+          e.currentTarget.style.boxShadow = "0 16px 48px rgba(0, 112, 173, 0.25)";
+        }}
+        onMouseLeave={e => {
+          e.currentTarget.style.transform = "";
+          e.currentTarget.style.boxShadow = "0 8px 32px rgba(0, 112, 173, 0.15)";
+        }}
       >
         <div className="card-body">
           <div className="d-flex align-items-center mb-3">
@@ -117,38 +125,34 @@ function ServiceCard({
                 loading="lazy"
               />
             )}
-            <h5 className="card-title mb-0">
+            <h5 className="card-title mb-0" style={{ color: "#1a365d", fontWeight: "600" }}>
               {name}
               {trademark && (
-                <sup className="ms-1 text-primary" style={{ fontSize: "0.7em" }}>
+                <sup className="ms-1" style={{ fontSize: "0.7em", color: "#0070AD" }}>
                   {trademark}
                 </sup>
               )}
             </h5>
           </div>
-          <p className="card-text">{description}</p>
-          <h6 className="fw-semibold text-primary">Key Features</h6>
+          <p className="card-text" style={{ color: "#4a5568", lineHeight: "1.6" }}>
+            {description}
+          </p>
+          <h6 className="fw-semibold mb-2" style={{ color: "#0070AD" }}>
+            Key Features
+          </h6>
           <ul className="list-unstyled mb-3">
             {features.map((feature, i) => (
-              <li key={i} className="d-flex align-items-center mb-1">
-                <FiCheckCircle className="me-2" style={{ color: "#1976d2" }} />
-                <span>{feature}</span>
+              <li key={i} className="d-flex align-items-center mb-2">
+                <FiCheckCircle 
+                  className="me-2 flex-shrink-0" 
+                  style={{ color: "#0070AD", fontSize: "1.1em" }} 
+                />
+                <span style={{ color: "#4a5568", fontSize: "0.95em" }}>
+                  {feature}
+                </span>
               </li>
             ))}
           </ul>
-          {/* <a
-            href={learnMoreUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="btn btn-primary px-4 py-2 rounded-pill fw-semibold"
-            style={{
-              background: "linear-gradient(90deg, #2bb1fc 70%, #1976d2 100%)",
-              border: "none",
-              boxShadow: "0 4px 16px rgba(44,156,247,0.08)"
-            }}
-          >
-            Learn more <span className="visually-hidden">about {name}</span>
-          </a> */}
         </div>
       </div>
     </div>
@@ -157,7 +161,13 @@ function ServiceCard({
 
 export default function ServiceCards() {
   return (
-    <div className="container py-5" style={{maxWidth: '100%', background: 'linear-gradient(135deg, rgb(224, 247, 250), rgb(224, 236, 252) 70%, rgb(240, 251, 252))'}}>
+    <div 
+      className="container py-5" 
+      style={{
+        maxWidth: '100%', 
+        background: 'linear-gradient(135deg, rgb(224, 247, 250), rgb(224, 236, 252) 70%, rgb(240, 251, 252))'
+      }}
+    >
       <div className="row g-4">
         {SERVICES.map((service, idx) => (
           <ServiceCard key={service.name} {...service} />

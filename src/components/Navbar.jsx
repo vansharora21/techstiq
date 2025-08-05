@@ -86,6 +86,12 @@ const ThemeSwitchIcon = ({ color = "#fff" }) => (
   </svg>
 );
 
+const PhoneIcon = ({ color = "#fff" }) => (
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
 // Enhanced Dropdown Component
 const DropdownMenu = ({ items, isVisible, theme }) => (
   <div
@@ -269,6 +275,10 @@ const Navbar = () => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
   };
 
+  const handlePhoneCall = () => {
+    window.location.href = "tel:+916377921402";
+  };
+
   return (
     <>
       {/* Spacer to prevent content jumping */}
@@ -345,8 +355,6 @@ const Navbar = () => {
                 </Link>
               </li>
 
-              {/* Add more navigation items here as needed */}
-
               <li>
                 <Link
                   to="/About-us"
@@ -385,8 +393,11 @@ const Navbar = () => {
             </ul>
           </div>
 
-          {/* RIGHT: Theme Toggle, CTA and Mobile Menu */}
+          {/* RIGHT: Phone, Theme Toggle, CTA and Mobile Menu */}
           <div style={{ display: "flex", alignItems: "center", gap: 16 }}>
+            {/* Desktop Phone Number */}
+            
+
             {/* Theme Toggle Button */}
             <button
               onClick={toggleTheme}
@@ -445,6 +456,35 @@ const Navbar = () => {
             >
               Get Started
             </Link>
+            <a
+              href="tel:+916377921402"
+              className="desktop-only phone-link"
+              style={{
+                display: "none",
+                alignItems: "center",
+                gap: 8,
+                color: theme.navText,
+                textDecoration: "none",
+                padding: "8px 12px",
+                borderRadius: 6,
+                border: `1px solid ${theme.navText}`,
+                fontSize: "clamp(13px, 1.8vw, 14px)",
+                fontWeight: 600,
+                transition: "all 0.2s ease",
+                whiteSpace: "nowrap",
+              }}
+              onMouseEnter={(e) => {
+                e.target.style.backgroundColor = "rgba(255,255,255,0.1)";
+                e.target.style.transform = "translateY(-1px)";
+              }}
+              onMouseLeave={(e) => {
+                e.target.style.backgroundColor = "transparent";
+                e.target.style.transform = "translateY(0)";
+              }}
+            >
+              <PhoneIcon color={theme.navText} />
+              <span>+91 79941 13788</span>
+            </a>
 
             {/* Mobile Hamburger */}
             <button
@@ -513,16 +553,6 @@ const Navbar = () => {
                   borderRadius: 6,
                 }}
               />
-              <div
-                style={{
-                  color: theme.navText,
-                  fontSize: 16,
-                  fontWeight: 600,
-                  letterSpacing: 0.02,
-                }}
-              >
-                Techstiq
-              </div>
             </div>
             <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
               {/* Mobile Theme Toggle */}
@@ -582,40 +612,41 @@ const Navbar = () => {
                 gap: 8,
               }}
             >
-              {/* Mobile Dropdowns */}
-              <li style={{ width: "100%" }}>
-                <DropdownMobile
-                  label="Products"
-                  open={openDropdown === "products"}
-                  onClick={() => handleDropdownClick("products")}
-                  items={PRODUCT_SERVICES}
-                  closeMenu={closeMobileMenu}
-                  theme={theme}
-                />
+              {/* Mobile Phone Number */}
+              <li style={{ width: "100%", marginBottom: 12 }}>
+                <a
+                  href="tel:+916377921402"
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: 12,
+                    background: "rgba(255,255,255,0.15)",
+                    color: theme.navText,
+                    textDecoration: "none",
+                    padding: "16px 20px",
+                    borderRadius: 12,
+                    border: `1px solid rgba(255,255,255,0.2)`,
+                    fontSize: 16,
+                    fontWeight: 600,
+                    transition: "all 0.2s ease",
+                    margin: "0 16px",
+                  }}
+                  onTouchStart={(e) => {
+                    e.target.style.backgroundColor = "rgba(255,255,255,0.25)";
+                  }}
+                  onTouchEnd={(e) => {
+                    e.target.style.backgroundColor = "rgba(255,255,255,0.15)";
+                  }}
+                >
+                  <PhoneIcon color={theme.navText} />
+                  <span>+91 79941 13788</span>
+                </a>
               </li>
-              <li style={{ width: "100%" }}>
-                <DropdownMobile
-                  label="Solutions"
-                  open={openDropdown === "solutions"}
-                  onClick={() => handleDropdownClick("solutions")}
-                  items={SOLUTIONS}
-                  closeMenu={closeMobileMenu}
-                  theme={theme}
-                />
-              </li>
-              <li style={{ width: "100%" }}>
-                <DropdownMobile
-                  label="Resources"
-                  open={openDropdown === "resources"}
-                  onClick={() => handleDropdownClick("resources")}
-                  items={RESOURCES}
-                  closeMenu={closeMobileMenu}
-                  theme={theme}
-                />
-              </li>
+
               <li style={{ width: "100%" }}>
                 <Link
-                  to="/pricing"
+                  to="/"
                   style={{
                     color: theme.navText,
                     fontWeight: 600,
@@ -628,12 +659,13 @@ const Navbar = () => {
                   }}
                   onClick={closeMobileMenu}
                 >
-                  Pricing
+                  Home
                 </Link>
               </li>
+
               <li style={{ width: "100%" }}>
                 <Link
-                  to="/about"
+                  to="/About-us"
                   style={{
                     color: theme.navText,
                     fontWeight: 600,
@@ -651,7 +683,7 @@ const Navbar = () => {
               </li>
               <li style={{ width: "100%" }}>
                 <Link
-                  to="/contact"
+                  to="/Contact-Us"
                   style={{
                     color: theme.navText,
                     fontWeight: 600,
@@ -671,10 +703,10 @@ const Navbar = () => {
               {/* Mobile CTA */}
               <li style={{ width: "100%", marginTop: 24 }}>
                 <Link
-                  to="/contact"
+                  to="/Contact-Us"
                   style={{
-                    background: theme.ctaGradient,
-                    color: "#fff",
+                    background: 'white',
+                    color: "#0070AD",
                     borderRadius: 12,
                     padding: "16px 24px",
                     fontSize: 16,
@@ -771,6 +803,12 @@ const Navbar = () => {
           box-shadow: 0 2px 8px rgba(51, 153, 255, 0.2) !important;
         }
 
+        /* Phone link hover effects */
+        .phone-link:hover {
+          background-color: rgba(255,255,255,0.1) !important;
+          transform: translateY(-1px) !important;
+        }
+
         /* Logo responsive adjustments */
         @media (max-width: 480px) {
           .logo img {
@@ -833,6 +871,23 @@ const Navbar = () => {
         @media (hover: hover) {
           .nav-dropdown:hover button {
             color: ${themes.light.hoverColor};
+          }
+        }
+
+        /* Responsive adjustments for phone number */
+        @media (max-width: 1200px) {
+          .phone-link span {
+            display: none;
+          }
+          .phone-link {
+            padding: 8px !important;
+            min-width: auto !important;
+          }
+        }
+
+        @media (min-width: 1201px) {
+          .phone-link {
+            min-width: 180px;
           }
         }
       `}</style>

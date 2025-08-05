@@ -303,10 +303,7 @@ function AboutUsPage() {
             minHeight: '3rem'
           }}>
             {typedText}
-            <span className="cursor" style={{
-              borderRight: '3px solid ' + themeColor,
-              animation: 'blink 1s infinite'
-            }}>|</span>
+           
           </h1>
           <p style={{
             fontSize: isMobile ? '1.1rem' : '1.3rem',
@@ -318,7 +315,7 @@ function AboutUsPage() {
           }}>
             TechStiq Solutions is a forward-thinking IT services and consulting firm dedicated to driving digital transformation and innovation for businesses across sectors.
           </p>
-          <Link to="/services" className="cta-button animated-button" style={{
+          <Link to="/" className="cta-button animated-button" style={{
             background: themeColor,
             color: '#fff',
             padding: isMobile ? '1rem 2rem' : '0.85rem 2.1rem',
@@ -350,7 +347,7 @@ function AboutUsPage() {
         </div>
 
         {/* TechStiq Logo Area */}
-        <div className="hero-visual" style={{
+        {/* <div className="hero-visual" style={{
           flex: 1,
           minWidth: isMobile ? '100%' : '340px',
           height: isMobile ? 'auto' : '340px',
@@ -380,7 +377,7 @@ function AboutUsPage() {
             <div>TS</div>
             <div style={{ fontSize: '0.8rem', fontWeight: 'normal', marginTop: '0.5rem' }}>TechStiq</div>
           </div>
-        </div>
+        </div> */}
       </section>
 
       {/* Animated Statistics */}

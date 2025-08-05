@@ -1,3 +1,4 @@
+import { color } from 'framer-motion';
 import React, { useState, useEffect } from 'react';
 
 const DigitalTransformationBanner = () => {
@@ -13,7 +14,7 @@ const DigitalTransformationBanner = () => {
 
   const styles = {
     bannerContainer: {
-      background: 'linear-gradient(135deg, #e0f2fe 0%, #b3e5fc 50%, #81d4fa 100%)',
+      background: 'linear-gradient(135deg, #e0f2fe 0%,rgb(40, 164, 221) 50%,rgb(13, 123, 173) 100%)',
       padding: 'clamp(40px, 8vw, 60px) clamp(20px, 5vw, 40px)',
       // borderRadius: 'clamp(12px, 3vw, 20px)',
       position: 'relative',
@@ -35,6 +36,7 @@ const DigitalTransformationBanner = () => {
       gap: 'clamp(20px, 5vw, 40px)'
     },
     textContent: {
+      color:'white',
       flex: 1,
       maxWidth: '100%',
       zIndex: 10
@@ -42,7 +44,7 @@ const DigitalTransformationBanner = () => {
     bannerTitle: {
       fontSize: 'clamp(1.5rem, 4vw, 2.5rem)',
       fontWeight: '700',
-      color: '#0d47a1',
+      color: '#fff',
       margin: '0',
       lineHeight: '1.2',
       marginBottom: 'clamp(4px, 1vw, 8px)',
@@ -58,7 +60,7 @@ const DigitalTransformationBanner = () => {
     bannerSubtitle: {
       fontSize: 'clamp(1.2rem, 3.5vw, 2.5rem)',
       fontWeight: '700',
-      color: '#1565c0',
+      color: '#fff',
       margin: '0',
       lineHeight: '1.2',
       position: 'absolute',
@@ -393,11 +395,11 @@ const DigitalTransformationBanner = () => {
             }
             
             .banner-title-dark {
-              color: #e3f2fd !important;
+              color: #fff !important;
             }
             
             .banner-subtitle-dark {
-              color: #bbdefb !important;
+              color: #fff !important;
             }
           }
         `}

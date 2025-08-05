@@ -2,6 +2,7 @@ import React, { useRef } from 'react';
 import ProductCards from './Servicecards';
 import DigitalTransformationBanner from './motivesection';
 import WhyChooseUsSection from './WhyChooseus';
+import banner from './Techstiq-Banner-Side.png';
 
 export default function Banner() {
   // Create a ref for the ProductCards section
@@ -184,7 +185,7 @@ export default function Banner() {
                     width: "100%",
                     height: 'auto'
                   }}
-                  src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3F-4Hi-3YskyVma0cckPXhjRt_d2bbknnzPTpBZo5JoFVmyhWs9OoyfS1KvJ1AwTxCqaRk2MU0ebbchVXAwSlsiGJDZnMBE36cn2J0C-kKfIjWW2wYgG41giISEsYQEyN3Z3zHiiGtq7vfzG_ziAfj6cQHMij2SWq4OWNtr0A80lVeW5PLU21Rp8sIs1Sfzm4yTQGZynI7xnaTBArxBj843IRM_aAziCSYAJ_LhX-Qxj6RYD_sCl7pw_sD68jnidZsnL63C_zRrM"
+                  src={banner}
                   alt="Techstiq digital solutions development"
                   loading="lazy"
                 />

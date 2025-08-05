@@ -69,7 +69,7 @@ const ContactUs = () => {
           font-family: 'Inter', sans-serif;
         }
         .contact-hero-section {
-          background: linear-gradient(100deg, #e0f2fe 0%, #b3e5fc 45%, #81d4fa 100%);
+          background: "linear-gradient(135deg, #e0f7fa, #e0ecfc 70%, #f0fbfc)";
           display: flex;
           flex-direction: row;
           align-items: center;
@@ -111,7 +111,7 @@ const ContactUs = () => {
           animation: fadeUp 0.9s both;
         }
         .contact-section-head h5 {
-          color: #41c3c9;
+          color: #0070AD;
           text-transform: uppercase;
           font-weight: 700;
           margin-bottom: 0.35rem;
@@ -119,17 +119,18 @@ const ContactUs = () => {
           font-size: 1.1rem;
         }
         .contact-section-head h2 {
+        color:'#0070AD'
           font-size: 2.85rem;
           font-weight: 800;
           margin: 0 0 0.5rem 0;
           line-height: 1.16;
         }
         .contact-section-head h2 span {
-          color: #41c3c9;
+          color: #0070AD;
           font-weight: 900;
         }
         .animate-underline-bar {
-          background: #41c3c9;
+          background: #0070AD;
           height: 4px;
           width: 90px;
           margin: 0.65rem 0 1.1rem 0;
@@ -175,7 +176,7 @@ const ContactUs = () => {
         .form-title {
           font-size: 2rem;
           font-weight: 700;
-          color: #0d47a1;
+          color: #0070AD;
           text-align:center;
           margin-bottom: 1.2rem;
         }
@@ -186,7 +187,7 @@ const ContactUs = () => {
         }
         .form-group label {
           font-weight: 600;
-          color: #1565c0;
+          color: #0070AD;
           margin-bottom: 0.5rem;
           font-size: 1rem;
           display: block;
@@ -203,7 +204,7 @@ const ContactUs = () => {
           transition: border-color 0.23s, box-shadow 0.22s;
         }
         .form-input:focus, .form-textarea:focus {
-          border-color: #41c3c9;
+          border-color: #0070AD;
           box-shadow: 0 0 0 4px #41c3c933;
         }
         .form-textarea {
@@ -213,7 +214,7 @@ const ContactUs = () => {
         }
         .submit-button {
           margin-top: 0.7rem;
-          background: linear-gradient(135deg, #41c3c9 0%, #009688 100%);
+          background: #0070AD;
           color: #fff;
           font-weight: 700;
           font-size: 1.1rem;
@@ -225,7 +226,7 @@ const ContactUs = () => {
           will-change: transform;
         }
         .submit-button:hover {
-          background: linear-gradient(135deg, #009688 0%, #41c3c9 100%);
+          background: #0070AD;
           box-shadow: 0 8px 25px #41c3c933;
           transform: translateY(-3px) scale(1.025);
         }
@@ -261,7 +262,7 @@ const ContactUs = () => {
         }
         .contact-info-icon {
           font-size: 2.1rem;
-          color: #41c3c9;
+          color: #0070AD;
           margin-right: 0.24rem;
           animation: bounceIcon 2.7s infinite both;
         }
@@ -273,7 +274,7 @@ const ContactUs = () => {
           margin: 0 0 3px 0;
           font-size: 1.13rem;
           font-weight: 700;
-          color: #15788d;
+          color: #0070AD;
         }
         .contact-info-details p {
           color: #516470;

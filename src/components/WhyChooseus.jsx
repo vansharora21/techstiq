@@ -93,7 +93,7 @@ export default function WhyChooseUsSection() {
           font-size: 1rem;
         }
         .wcu-section-head h2 {
-          font-size:2.6rem; font-weight:900; color:#1a242e;
+          font-size:2.6rem; font-weight:900; color:rgb(5, 51, 92);;
           line-height:1.1; letter-spacing:-.5px;
         }
         .wcu-section-head h2 span {
