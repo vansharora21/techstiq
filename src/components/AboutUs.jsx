@@ -223,7 +223,7 @@ function AboutUsPage() {
 
   return (
     <div className="about-us-page" style={{
-      fontFamily: "'Open Sans', sans-serif",
+      fontFamily: "Lexend Deca, sans-serif",
       color: '#222',
       background: '#f6fafd',
       maxWidth: '100%',
