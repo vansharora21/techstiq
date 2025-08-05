@@ -89,7 +89,7 @@ function AboutUsPage() {
       title: 'Application Development', 
       description: 'End-to-end development with design, coding, deployment, and legacy system modernization for scalable solutions.',
       stats: '200+ Apps Built',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 2,
@@ -97,7 +97,7 @@ function AboutUsPage() {
       title: 'Cybersecurity Services', 
       description: "Advanced security measures including threat detection, penetration testing, and compliance management.",
       stats: '99.9% Security',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 3,
@@ -105,7 +105,7 @@ function AboutUsPage() {
       title: 'Quality Assurance', 
       description: 'Rigorous QA practices with automated and manual testing across platforms for digital reputation protection.',
       stats: '0% Bug Rate',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 4,
@@ -113,7 +113,7 @@ function AboutUsPage() {
       title: 'Infrastructure Services', 
       description: 'Server, network & cloud infrastructure management with 24/7 monitoring and proactive incident management.',
       stats: '24/7 Support',
-      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 5,
@@ -121,7 +121,7 @@ function AboutUsPage() {
       title: 'Cloud Solutions', 
       description: 'Cloud migration and scaling services for AWS, Azure, Google Cloud with cost optimization strategies.',
       stats: '50+ Migrations',
-      gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'
+     gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 6,
@@ -129,7 +129,7 @@ function AboutUsPage() {
       title: 'Mobile Solutions', 
       description: 'Native and hybrid mobile app development with UX-centric design for iOS and Android platforms.',
       stats: '100+ Mobile Apps',
-      gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 7,
@@ -137,7 +137,7 @@ function AboutUsPage() {
       title: 'BI & Analytics', 
       description: 'Transform data into actionable insights with dashboards, predictive analytics, and data integration.',
       stats: '1TB+ Data Processed',
-      gradient: 'linear-gradient(135deg, #d299c2 0%, #fef9d7 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 8,
@@ -145,7 +145,7 @@ function AboutUsPage() {
       title: 'IoT Solutions', 
       description: 'Connected operations with IoT ecosystem design, device management, and scalable architecture.',
       stats: '10K+ Devices',
-      gradient: 'linear-gradient(135deg, #89f7fe 0%, #66a6ff 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     },
     { 
       id: 9,
@@ -153,7 +153,7 @@ function AboutUsPage() {
       title: 'IT Staffing', 
       description: 'Flexible workforce augmentation with contract staffing and rapid team scaling solutions.',
       stats: '500+ Placements',
-      gradient: 'linear-gradient(135deg, #fdbb2d 0%, #22c1c3 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
     }
   ];
 
