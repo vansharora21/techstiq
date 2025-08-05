@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import logo from "./techstiq_logo.jpeg";
+import logo from "./Techstiq-Logo.png";
 
 // Theme configuration
 const themes = {
@@ -16,7 +16,7 @@ const themes = {
     dropdownHoverBg: "#e0f7fa",
     dropdownHoverText: "#0070AD",
     mobileMenuBackground: "linear-gradient(180deg, #0070AD 0%, #005680 100%)",
-    ctaGradient: "linear-gradient(135deg, #ff642f, #e55527)",
+    
     hoverColor: "#e0f7fa",
     backdropBlur: "blur(10px)",
   },
@@ -53,7 +53,7 @@ const SOLUTIONS = [
 ];
 
 const RESOURCES = [
-  { name: "Blog", desc: "Insights and best practices", path: "/resources/blog" },
+  // { name: "Blog", desc: "Insights and best practices", path: "/resources/blog" },
   // { name: "Case Studies", desc: "Real customer results", path: "/resources/case-studies" },
   // { name: "Documentation", desc: "Technical guides", path: "/resources/documentation" },
 ];
@@ -398,7 +398,7 @@ const Navbar = () => {
                 }}>Contact Us</Link>
               </li>
               {/* Resources dropdown */}
-              <li className="nav-dropdown" style={{ position: "relative" }}
+              {/* <li className="nav-dropdown" style={{ position: "relative" }}
                 onMouseEnter={() => setOpenDropdown("resources")}
                 onMouseLeave={() => setOpenDropdown(null)}
               >
@@ -424,7 +424,7 @@ const Navbar = () => {
                   isVisible={openDropdown === "resources"}
                   theme={theme}
                 />
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -463,8 +463,8 @@ const Navbar = () => {
             {/* Desktop CTA */}
             <Link to="/Contact-Us" className="desktop-only"
               style={{
-                background: theme.ctaGradient,
-                color: "#fff",
+                background: 'white',
+                color: "rgb(15, 148, 219)", // Change this to white
                 borderRadius: 8,
                 padding: "10px 20px",
                 fontSize: "clamp(14px, 2vw, 15px)",
@@ -789,10 +789,26 @@ const Navbar = () => {
         
         /* Logo responsive adjustments */
         @media (max-width: 480px) {
-          .logo img {
-            height: 40px !important;
-            width: 40px !important;
-          }
+         .logo img {
+  display: block;
+  height: 48px;
+  width: 48px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.13), 0 0px 0 #fff;
+  background: #fff;
+  border: 2.5px solid #fff;
+  object-fit: contain;
+  transition: box-shadow 0.18s cubic-bezier(.25,.8,.25,1);
+}
+
+.navbar-main[data-theme="dark"] .logo img {
+  background: #001f3f;
+  border-color: #001f3f;
+}
+.logo img:hover {
+  box-shadow: 0 8px 24px rgba(0,112,173,0.18), 0 0px 0 #fff;
+}
+
         }
         
         /* Tablet and Desktop */
