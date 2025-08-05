@@ -18,7 +18,7 @@ const features = [
   // { title: "Global Delivery Capability", icon: "flaticon-global", number: "15" },
   // { title: "Continuous Improvement Mindset", icon: "flaticon-improve", number: "16" },
   // { title: "End-User Experience Focus", icon: "flaticon-user", number: "17" },
-  { title: "Robust Quality Assurance", icon: "flaticon-quality", number: "18" },
+  // { title: "Robust Quality Assurance", icon: "flaticon-quality", number: "18" },
   // { title: "Long-Term Relationship Building", icon: "flaticon-relationship", number: "19" },
   { title: "Post-Deployment Support", icon: "flaticon-support", number: "20" },
 ];
