@@ -483,7 +483,7 @@ const Navbar = () => {
               }}
             >
               <PhoneIcon color={theme.navText} />
-              <span>+91 79941 13788</span>
+              <span> +91 6377921402</span>
             </a>
 
             {/* Mobile Hamburger */}
