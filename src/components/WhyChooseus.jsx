@@ -1,25 +1,25 @@
 import React, { useEffect, useRef } from "react";
 
 const features = [
-  { title: "Proven Industry Expertise", icon: "flaticon-process", number: "1" },
+  // { title: "Proven Industry Expertise", icon: "flaticon-process", number: "1" },
   { title: "Client-Centric Approach", icon: "flaticon-system", number: "2" },
   { title: "360° Digital Transformation", icon: "flaticon-data", number: "3" },
   { title: "Innovative Problem-Solving", icon: "flaticon-idea", number: "4" },
   { title: "Transparent Communication", icon: "flaticon-chat", number: "5" },
   { title: "Agile & Adaptive Delivery", icon: "flaticon-agile", number: "6" },
-  { title: "Cutting-Edge Technology Stack", icon: "flaticon-code", number: "7" },
+  // { title: "Cutting-Edge Technology Stack", icon: "flaticon-code", number: "7" },
   { title: "Scalable Solutions", icon: "flaticon-growth", number: "8" },
   { title: "Data-Driven Decision Making", icon: "flaticon-analytics", number: "9" },
   { title: "Security & Compliance First", icon: "flaticon-security", number: "10" },
-  { title: "Dedicated Project Ownership", icon: "flaticon-project", number: "11" },
+  // { title: "Dedicated Project Ownership", icon: "flaticon-project", number: "11" },
   { title: "Collaborative Partnership", icon: "flaticon-collaborate", number: "12" },
   { title: "Cost-Effective Innovation", icon: "flaticon-cost", number: "13" },
   { title: "On-Time, On-Budget Delivery", icon: "flaticon-time", number: "14" },
-  { title: "Global Delivery Capability", icon: "flaticon-global", number: "15" },
-  { title: "Continuous Improvement Mindset", icon: "flaticon-improve", number: "16" },
-  { title: "End-User Experience Focus", icon: "flaticon-user", number: "17" },
+  // { title: "Global Delivery Capability", icon: "flaticon-global", number: "15" },
+  // { title: "Continuous Improvement Mindset", icon: "flaticon-improve", number: "16" },
+  // { title: "End-User Experience Focus", icon: "flaticon-user", number: "17" },
   { title: "Robust Quality Assurance", icon: "flaticon-quality", number: "18" },
-  { title: "Long-Term Relationship Building", icon: "flaticon-relationship", number: "19" },
+  // { title: "Long-Term Relationship Building", icon: "flaticon-relationship", number: "19" },
   { title: "Post-Deployment Support", icon: "flaticon-support", number: "20" },
 ];
 

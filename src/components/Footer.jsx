@@ -8,12 +8,7 @@ export default function Footer() {
   const [animateStats, setAnimateStats] = useState(false);
 
   // Real-time clock update
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
+
 
   // Intersection Observer for animations
   useEffect(() => {
@@ -245,31 +240,7 @@ export default function Footer() {
               ))}
             </div>
 
-            {/* Live Clock */}
-            <div
-              className="p-3 rounded-3"
-              style={{
-                background: "rgba(255, 255, 255, 0.6)",
-                border: "1px solid rgba(66, 139, 255, 0.2)",
-                marginBottom: "1rem"
-              }}
-            >
-              <div className="d-flex align-items-center">
-                <div className="me-2" style={{ fontSize: "1.2rem" }}>🕐</div>
-                <div>
-                  <div style={{ fontSize: "0.8rem", color: "#5a6b8c" }}>Current Time (IST)</div>
-                  <div style={{ fontSize: "1rem", fontWeight: "600", color: "#1a2a52" }}>
-                    {currentTime.toLocaleTimeString('en-IN', { 
-                      timeZone: 'Asia/Kolkata',
-                      hour12: true,
-                      hour: '2-digit',
-                      minute: '2-digit',
-                      second: '2-digit'
-                    })}
-                  </div>
-                </div>
-              </div>
-            </div>
+
           </div>
 
           {/* Middle Column - Newsletter */}
