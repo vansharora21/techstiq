@@ -14,9 +14,8 @@ const DigitalTransformationBanner = () => {
 
   const styles = {
     bannerContainer: {
-      background: 'linear-gradient(135deg, #e0f2fe 0%,rgb(40, 164, 221) 50%,rgb(13, 123, 173) 100%)',
+      background: 'linear-gradient(135deg, #e0f2fe 0%, #0070AD 50%, #005a8b 100%)',
       padding: 'clamp(40px, 8vw, 60px) clamp(20px, 5vw, 40px)',
-      // borderRadius: 'clamp(12px, 3vw, 20px)',
       position: 'relative',
       overflow: 'hidden',
       minHeight: 'clamp(250px, 50vh, 400px)',
@@ -36,7 +35,7 @@ const DigitalTransformationBanner = () => {
       gap: 'clamp(20px, 5vw, 40px)'
     },
     textContent: {
-      color:'white',
+      color: 'white',
       flex: 1,
       maxWidth: '100%',
       zIndex: 10
@@ -69,7 +68,7 @@ const DigitalTransformationBanner = () => {
       wordWrap: 'break-word'
     },
     ctaButton: {
-      background: 'linear-gradient(135deg, #42a5f5 0%, #1e88e5 100%)',
+      background: 'linear-gradient(135deg, #0070AD 0%, #005a8b 100%)',
       color: 'white',
       border: 'none',
       padding: 'clamp(12px, 2.5vw, 16px) clamp(20px, 4vw, 32px)',
@@ -82,7 +81,7 @@ const DigitalTransformationBanner = () => {
       justifyContent: 'center',
       gap: 'clamp(6px, 1.5vw, 8px)',
       transition: 'all 0.3s ease',
-      boxShadow: '0 4px 15px rgba(66, 165, 245, 0.3)',
+      boxShadow: '0 4px 15px rgba(0, 112, 173, 0.4)',
       animation: 'slideInUp 1.2s ease-out',
       width: 'fit-content',
       minWidth: 'clamp(160px, 30vw, 200px)',
@@ -102,8 +101,8 @@ const DigitalTransformationBanner = () => {
       position: 'absolute',
       width: 'clamp(60px, 12vw, 120px)',
       height: 'clamp(52px, 10.4vw, 104px)',
-      background: 'rgba(144, 202, 249, 0.2)',
-      border: '2px solid #42a5f5',
+      background: 'rgba(0, 112, 173, 0.2)',
+      border: '2px solid #0070AD',
       borderRadius: '8px',
       transform: 'rotate(30deg)',
       top: 'clamp(10px, 3vw, 20px)',
@@ -115,8 +114,8 @@ const DigitalTransformationBanner = () => {
       position: 'absolute',
       width: 'clamp(40px, 8vw, 80px)',
       height: 'clamp(40px, 8vw, 80px)',
-      background: 'rgba(100, 181, 246, 0.3)',
-      border: '2px solid #1e88e5',
+      background: 'rgba(0, 112, 173, 0.3)',
+      border: '2px solid #005a8b',
       transform: 'rotate(45deg)',
       top: 'clamp(40px, 8vw, 80px)',
       right: 'clamp(10px, 2vw, 20px)',
@@ -128,8 +127,8 @@ const DigitalTransformationBanner = () => {
       position: 'absolute',
       width: 'clamp(30px, 6vw, 60px)',
       height: 'clamp(30px, 6vw, 60px)',
-      background: 'rgba(66, 165, 245, 0.2)',
-      border: '2px solid #1976d2',
+      background: 'rgba(0, 112, 173, 0.2)',
+      border: '2px solid #0070AD',
       transform: 'rotate(45deg)',
       bottom: 'clamp(30px, 6vw, 60px)',
       right: 'clamp(60px, 12vw, 120px)',
@@ -143,7 +142,7 @@ const DigitalTransformationBanner = () => {
       borderLeft: 'clamp(15px, 3vw, 30px) solid transparent',
       borderRight: 'clamp(15px, 3vw, 30px) solid transparent',
       borderBottom: 'clamp(26px, 5.2vw, 52px) solid transparent',
-      borderTop: 'clamp(26px, 5.2vw, 52px) solid #2196f3',
+      borderTop: 'clamp(26px, 5.2vw, 52px) solid #0070AD',
       bottom: 'clamp(20px, 4vw, 40px)',
       right: 'clamp(100px, 20vw, 200px)',
       opacity: '0.5',
@@ -162,7 +161,7 @@ const DigitalTransformationBanner = () => {
       position: 'absolute',
       width: 'clamp(2px, 0.5vw, 4px)',
       height: 'clamp(2px, 0.5vw, 4px)',
-      background: '#1e88e5',
+      background: '#0070AD',
       borderRadius: '50%',
       opacity: '0.4'
     }
@@ -181,14 +180,14 @@ const DigitalTransformationBanner = () => {
 
   const handleButtonHover = (e) => {
     e.target.style.transform = 'translateY(-2px) scale(1.05)';
-    e.target.style.boxShadow = '0 6px 20px rgba(66, 165, 245, 0.5)';
+    e.target.style.boxShadow = '0 6px 20px rgba(0, 112, 173, 0.6)';
     const arrow = e.target.querySelector('.arrow');
     if (arrow) arrow.style.transform = 'translateX(4px)';
   };
 
   const handleButtonLeave = (e) => {
     e.target.style.transform = 'translateY(0) scale(1)';
-    e.target.style.boxShadow = '0 4px 15px rgba(66, 165, 245, 0.3)';
+    e.target.style.boxShadow = '0 4px 15px rgba(0, 112, 173, 0.4)';
     const arrow = e.target.querySelector('.arrow');
     if (arrow) arrow.style.transform = 'translateX(0)';
   };
@@ -391,7 +390,7 @@ const DigitalTransformationBanner = () => {
           /* Dark mode support */
           @media (prefers-color-scheme: dark) {
             .banner-container-dark {
-              background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%) !important;
+              background: linear-gradient(135deg, #003d66 0%, #0070AD 50%, #005a8b 100%) !important;
             }
             
             .banner-title-dark {
@@ -454,10 +453,7 @@ const DigitalTransformationBanner = () => {
             style={styles.geometricShapes}
             className="geometric-shapes-mobile geometric-shapes-tablet geometric-shapes-retina"
           >
-            <div style={styles.hexagon1}></div>
-            <div style={styles.hexagon2}></div>
-            <div style={styles.diamond}></div>
-            <div style={styles.triangle}></div>
+           
           </div>
         </div>
       </div>
