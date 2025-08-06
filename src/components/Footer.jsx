@@ -361,7 +361,7 @@ export default function Footer() {
                 <img
                   src={logo}
                   alt="Techstiq Logo"
-                  style={{ height: "80px", width: "auto", objectFit: "contain", display: "block" }}
+                  style={{ height: "80px", marginBottom:'50px ',width: "auto", objectFit: "contain", display: "block" }}
                 />
               </div>
               
