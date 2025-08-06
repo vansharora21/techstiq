@@ -316,7 +316,7 @@ const Navbar = () => {
                 src={logo}
                 alt="Techstiq Logo"
                 style={{
-                  height:'100%',
+                  
                   width: '100%',
                   objectFit: "contain",
                   borderRadius: 6,
@@ -813,7 +813,7 @@ const Navbar = () => {
         @media (max-width: 480px) {
           .logo img {
             display: block;
-            height: 100px !important;
+            height: 150px !important;
             width: 100px !important;
             border-radius: 10px;
             object-fit: contain;
@@ -847,7 +847,7 @@ const Navbar = () => {
             display: none !important; 
           }
           .logo img {
-            height: 100px !important;
+            height: 150px !important;
             width: 100px !important;
           }
         }
