@@ -640,7 +640,7 @@ const Navbar = () => {
                   }}
                 >
                   <PhoneIcon color={theme.navText} />
-                  <span>+91 79941 13788</span>
+                  <span>+91 6350-383-767</span>
                 </a>
               </li>
 

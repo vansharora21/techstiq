@@ -188,21 +188,13 @@ export default function Footer() {
               <img
                 src={logo}
                 alt="Techstiq Logo"
-                style={{ height: "38px", width: "auto", objectFit: "contain", display: "block" }}
+                style={{ height: "80px", width: "auto", objectFit: "contain", display: "block" }}
               />
-              {/* <p
-                className="mb-0"
-                style={{
-                  color: "#5a6b8c",
-                  fontSize: "0.95rem",
-                  lineHeight: "1.6",
-                  whiteSpace: "normal",
-                }}
-              >
-                Transforming ideas into digital reality with cutting-edge technology and innovative solutions.
-              </p> */}
             </div>
-            <h6
+            
+            {/* Social Icons */}
+            <div className="d-flex gap-2 flex-wrap">
+              <h6
               style={{
                 color: "#1a2a52",
                 fontWeight: "600",
@@ -213,8 +205,6 @@ export default function Footer() {
             >
               Connect With Us
             </h6>
-            {/* Social Icons */}
-            <div className="d-flex gap-2 flex-wrap">
               {[
                 { icon: "fab fa-linkedin-in", color: "#0077b5", url: "https://www.linkedin.com/company/techstiq/", name: "LinkedIn" },
                 { icon: "fab fa-instagram", color: "#E4405F", url: "https://www.instagram.com/techstiq?utm_source=qr&igsh=ejRiaTIyajVmc2Jr", name: "Instagram" },
