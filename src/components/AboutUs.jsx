@@ -89,7 +89,7 @@ function AboutUsPage() {
       title: 'Application Development', 
       description: 'End-to-end development with design, coding, deployment, and legacy system modernization for scalable solutions.',
       stats: '200+ Apps Built',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 2,
@@ -97,7 +97,7 @@ function AboutUsPage() {
       title: 'Cybersecurity Services', 
       description: "Advanced security measures including threat detection, penetration testing, and compliance management.",
       stats: '99.9% Security',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 3,
@@ -105,7 +105,7 @@ function AboutUsPage() {
       title: 'Quality Assurance', 
       description: 'Rigorous QA practices with automated and manual testing across platforms for digital reputation protection.',
       stats: '0% Bug Rate',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 4,
@@ -113,7 +113,7 @@ function AboutUsPage() {
       title: 'Infrastructure Services', 
       description: 'Server, network & cloud infrastructure management with 24/7 monitoring and proactive incident management.',
       stats: '24/7 Support',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 5,
@@ -121,7 +121,7 @@ function AboutUsPage() {
       title: 'Cloud Solutions', 
       description: 'Cloud migration and scaling services for AWS, Azure, Google Cloud with cost optimization strategies.',
       stats: '50+ Migrations',
-     gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+     gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 6,
@@ -129,7 +129,7 @@ function AboutUsPage() {
       title: 'Mobile Solutions', 
       description: 'Native and hybrid mobile app development with UX-centric design for iOS and Android platforms.',
       stats: '100+ Mobile Apps',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 7,
@@ -137,7 +137,7 @@ function AboutUsPage() {
       title: 'BI & Analytics', 
       description: 'Transform data into actionable insights with dashboards, predictive analytics, and data integration.',
       stats: '1TB+ Data Processed',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 8,
@@ -145,7 +145,7 @@ function AboutUsPage() {
       title: 'IoT Solutions', 
       description: 'Connected operations with IoT ecosystem design, device management, and scalable architecture.',
       stats: '10K+ Devices',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 9,
@@ -153,7 +153,7 @@ function AboutUsPage() {
       title: 'IT Staffing', 
       description: 'Flexible workforce augmentation with contract staffing and rapid team scaling solutions.',
       stats: '500+ Placements',
-      gradient: 'linear-gradient(135deg, #0070AD 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     }
   ];
 
@@ -164,28 +164,28 @@ function AboutUsPage() {
       title: '🎯 Client-First Approach', 
       description: 'We begin with a deep assessment of your business goals to deliver tailored solutions that drive real results.',
       stats: '98% Client Satisfaction',
-      gradient: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 2,
       title: '🚀 Innovation-Led Delivery', 
       description: "Harnessing emerging technologies like AI, IoT, and cloud to build efficient, scalable systems.",
       stats: 'Latest Tech Stack',
-      gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 3,
       title: '🔄 Flexible Engagement', 
       description: 'From consulting-led projects to managed services and team augmentation - we adapt to your needs.',
       stats: '3 Engagement Models',
-      gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     },
     { 
       id: 4,
       title: '🛠️ End-to-End Support', 
       description: 'Complete lifecycle coverage from strategy and development to deployment, QA, and maintenance.',
       stats: 'Full Lifecycle',
-      gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'
+      gradient: 'linear-gradient(135deg, #0070AD 0%,rgb(102, 136, 239) 100%)'
     }
   ];
 
@@ -225,6 +225,7 @@ function AboutUsPage() {
     <div className="about-us-page" style={{
       fontFamily: "Lexend Deca, sans-serif",
       color: '#222',
+      // padding:'100px',
       background: '#f6fafd',
       maxWidth: '100%',
       margin: '0 auto',
@@ -282,6 +283,8 @@ function AboutUsPage() {
           gap: isMobile ? '1.5rem' : '2rem',
           background: '#fff',
           borderRadius: '18px',
+          paddingTop:'50px',
+          padding:'20px',
           boxShadow: '0 8px 32px rgba(0,114,217,0.07)',
           transform: `translateY(${scrollY * 0.1}px)`,
           opacity: visibleSections.has('hero') ? 1 : 0,
@@ -615,7 +618,7 @@ function AboutUsPage() {
         <h2 style={{
           fontFamily: "'Poppins', sans-serif",
           marginBottom: '2rem',
-          color: themeColor,
+          color: '#0070AD',
           fontSize: isMobile ? '2rem' : '2.2rem',
           textAlign: 'center',
           animation: visibleSections.has('values') ? 'slideInDown 0.6s ease-out' : 'none'

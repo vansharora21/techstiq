@@ -307,7 +307,7 @@ const Navbar = () => {
               style={{
                 display: "flex",
                 alignItems: "center",
-                height: 100,
+                // height: 100,
                 flexShrink: 0,
                 marginRight: 8,
               }}
@@ -316,8 +316,8 @@ const Navbar = () => {
                 src={logo}
                 alt="Techstiq Logo"
                 style={{
-                  height: 100,
-                  width: 100,
+                  height:'100%',
+                  width: '100%',
                   objectFit: "contain",
                   borderRadius: 6,
                 }}
@@ -813,14 +813,11 @@ const Navbar = () => {
         @media (max-width: 480px) {
           .logo img {
             display: block;
-            height: 80px !important;
-            width: 80px !important;
+            height: 100px !important;
+            width: 100px !important;
             border-radius: 10px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-            background: #fff;
-            border: 2.5px solid #fff;
             object-fit: contain;
-            transition: box-shadow 0.18s cubic-bezier(.25,.8,.25,1);
+           
           }
           .navbar-main[data-theme="dark"] .logo img {
             background: #001f3f;

@@ -57,7 +57,6 @@ function App() {
         <Route path="/About-Us" element={<AboutUs />} />
         <Route path="/Contact-Us" element={<ContactUs />} />
         <Route path="/resources/blog" element={<BlogList />} />
-        
       </Routes>
       <Footer />
 
