@@ -108,7 +108,7 @@ export default function Banner() {
                   fontSize: 'clamp(0.75rem, 2vw, 0.875rem)'
                 }}
               >
-                TECHSTIQ - WE BUILD. WE SCALE. YOU GROW.
+                Techstiq - WE BUILD. WE SCALE. YOU GROW.
               </p>
               <h1 
                 className="display-4 fw-bold mt-3 responsive-heading" 

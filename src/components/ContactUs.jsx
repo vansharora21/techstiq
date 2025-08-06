@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import logo from "./techstiq_logo.jpeg";
-import treeSVG from "./tree swing.gif"; // Make sure this path is correct
+import treeSVG from "./contact-us.jpg"; // Make sure this path is correct
 
 const ContactUs = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -51,7 +51,7 @@ const ContactUs = () => {
   const contactInfo = [
     { icon: '📍', title: 'Address', value: 'Jaipur, Rajasthan' },
     { icon: '📞', title: 'Phone', value: '+91 6350-383-767' },
-    { icon: '✉️', title: 'Email', value: 'support@techstiq.com' },
+    { icon: '✉️', title: 'Email', value: 'support@Techstiq.com' },
     { icon: '🕒', title: 'Business Hours', value: 'Mon-Fri: 9:00 AM - 6:00 PM\nSaturday: 10:00 AM - 4:00 PM' }
   ];
 
@@ -59,7 +59,7 @@ const ContactUs = () => {
     <>
       <Helmet>
         <link rel="icon" href={logo} />
-        <title>Contact Us | TechStiq – Get in Touch Today</title>
+        <title>Contact Us | Techstiq – Get in Touch Today</title>
       </Helmet>
       <style jsx="true">{`
         * { box-sizing: border-box; }

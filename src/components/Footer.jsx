@@ -43,8 +43,8 @@ export default function Footer() {
   };
 
   const handleEmailClick = () => {
-    window.location.href = "mailto:Support@techstiq.com";
-    console.log("Email clicked - redirecting to Support@techstiq.com");
+    window.location.href = "mailto:Support@Techstiq.com";
+    console.log("Email clicked - redirecting to Support@Techstiq.com");
   };
 
   const stats = [
@@ -59,10 +59,10 @@ export default function Footer() {
       id="innovative-footer"
       className="text-center text-lg-start border-0"
       style={{
-        background: "linear-gradient(135deg, #dae8fc 0%, #a8cfff 50%, #95c7ff 100%)",
+        background: "linear-gradient(135deg, rgb(224, 247, 250), rgb(224, 236, 252) 70%, rgb(240, 251, 252))",
         color: "#1a2a52",
         paddingTop: "3rem",
-        paddingBottom: "1rem",
+        paddingBottom: "0", // Changed to 0 since we'll add padding to copyright section
         position: "relative",
         overflow: "hidden",
         transform: isVisible ? "translateY(0)" : "translateY(20px)",
@@ -106,63 +106,6 @@ export default function Footer() {
             }}
           />
         ))}
-      </div>
-
-      {/* Stats Section - Hidden on mobile */}
-      <div className="container-stats d-none d-md-block" style={{ position: "relative", zIndex: 2 }}>
-        <div className="row mb-5">
-          <div className="col-12">
-            <div className="d-flex justify-content-center align-items-center mb-4">
-              <div
-                style={{
-                  background: "rgba(66, 139, 255, 0.1)",
-                  padding: "8px 20px",
-                  borderRadius: "25px",
-                  border: "1px solid rgba(66, 139, 255, 0.2)",
-                  fontSize: "0.9rem",
-                  fontWeight: "600",
-                  color: "#428bff",
-                }}
-              >
-                🎯 Trusted by Industry Leaders
-              </div>
-            </div>
-            <div className="row g-4">
-              {stats.map((stat, index) => (
-                <div key={index} className="col-lg-3 col-md-6 col-sm-6">
-                  <div
-                    className="text-center p-4 rounded-4 h-100"
-                    style={{
-                      background: "rgba(255, 255, 255, 0.8)",
-                      backdropFilter: "blur(10px)",
-                      border: "1px solid rgba(66, 139, 255, 0.2)",
-                      transition: "all 0.4s cubic-bezier(0.4, 0, 0.2, 1)",
-                      transform: animateStats ? "translateY(0)" : "translateY(30px)",
-                      opacity: animateStats ? 1 : 0,
-                      transitionDelay: `${index * 0.1}s`,
-                      cursor: "pointer",
-                    }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.transform = "translateY(-8px) scale(1.02)";
-                      e.currentTarget.style.boxShadow = "0 20px 40px rgba(66, 139, 255, 0.2)";
-                      console.log(`Stat hovered: ${stat.label}`);
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.transform = "translateY(0) scale(1)";
-                      e.currentTarget.style.boxShadow = "none";
-                    }}
-                  >
-                    <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>{stat.icon}</div>
-                    <div style={{ fontSize: "2rem", fontWeight: "bold", color: "#428bff", marginBottom: "0.5rem" }}>
-                      {stat.number}
-                    </div>
-                    <div style={{ fontSize: "0.9rem", color: "#5a6b8c", fontWeight: "500" }}>{stat.label}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
       </div>
 
       {/* Main Content - Optimized for mobile */}
@@ -282,25 +225,13 @@ export default function Footer() {
 
           {/* Social Media Section - Mobile */}
           <div className="text-center">
-            <h6
-              style={{
-                color: "#1a2a52",
-                fontWeight: "600",
-                margin: "0 0 1rem 0",
-                fontSize: "0.95rem",
-                userSelect: "none",
-              }}
-            >
-              Connect With Us
-            </h6>
-            
             <div className="d-flex justify-content-center flex-wrap gap-2">
               {[
-                { icon: "fab fa-linkedin-in", color: "#0077b5", url: "https://www.linkedin.com/company/techstiq/", name: "LinkedIn" },
-                { icon: "fab fa-instagram", color: "#E4405F", url: "https://www.instagram.com/techstiq?utm_source=qr&igsh=ejRiaTIyajVmc2Jr", name: "Instagram" },
+                { icon: "fab fa-linkedin-in", color: "#0077b5", url: "https://www.linkedin.com/company/Techstiq/", name: "LinkedIn" },
+                { icon: "fab fa-instagram", color: "#E4405F", url: "https://www.instagram.com/Techstiq?utm_source=qr&igsh=ejRiaTIyajVmc2Jr", name: "Instagram" },
                 { icon: "fab fa-facebook-f", color: "#1877F2", url: "https://www.facebook.com/share/1CNEYPbsXN/?mibextid=qi2Omg", name: "Facebook" },
                 { icon: "fab fa-x", color: "#000000", url: "https://x.com/Thetechstiq?t=M3RquO1wgZ2uTcoezu712Q&s=08", name: "Twitter" },
-                { icon: "fab fa-youtube", color: "#FF0000", url: "https://youtube.com/@techstiq?si=JCdJ8vi_XcQXlJXc", name: "YouTube" },
+                { icon: "fab fa-youtube", color: "#FF0000", url: "https://youtube.com/@Techstiq?si=JCdJ8vi_XcQXlJXc", name: "YouTube" },
                 { icon: "fas fa-envelope", color: "#D44638", url: "#", name: "Email" },
               ].map((social, index) => (
                 <a
@@ -367,23 +298,12 @@ export default function Footer() {
               
               {/* Social Icons */}
               <div className="d-flex gap-2 flex-wrap">
-                <h6
-                style={{
-                  color: "#1a2a52",
-                  fontWeight: "600",
-                  margin: "0.5rem 0 0 0",
-                  fontSize: "1rem",
-                  userSelect: "none",
-                }}
-              >
-                Connect With Us
-              </h6>
                 {[
-                  { icon: "fab fa-linkedin-in", color: "#0077b5", url: "https://www.linkedin.com/company/techstiq/", name: "LinkedIn" },
-                  { icon: "fab fa-instagram", color: "#E4405F", url: "https://www.instagram.com/techstiq?utm_source=qr&igsh=ejRiaTIyajVmc2Jr", name: "Instagram" },
+                  { icon: "fab fa-linkedin-in", color: "#0077b5", url: "https://www.linkedin.com/company/Techstiq/", name: "LinkedIn" },
+                  { icon: "fab fa-instagram", color: "#E4405F", url: "https://www.instagram.com/Techstiq?utm_source=qr&igsh=ejRiaTIyajVmc2Jr", name: "Instagram" },
                   { icon: "fab fa-facebook-f", color: "#1877F2", url: "https://www.facebook.com/share/1CNEYPbsXN/?mibextid=qi2Omg", name: "Facebook" },
                   { icon: "fab fa-x", color: "#000000", url: "https://x.com/Thetechstiq?t=M3RquO1wgZ2uTcoezu712Q&s=08", name: "Twitter" },
-                  { icon: "fab fa-youtube", color: "#FF0000", url: "https://youtube.com/@techstiq?si=JCdJ8vi_XcQXlJXc", name: "YouTube" },
+                  { icon: "fab fa-youtube", color: "#FF0000", url: "https://youtube.com/@Techstiq?si=JCdJ8vi_XcQXlJXc", name: "YouTube" },
                   { icon: "fas fa-envelope", color: "#D44638", url: "#", name: "Email" },
                 ].map((social, index) => (
                   <a
@@ -522,6 +442,33 @@ export default function Footer() {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* Copyright Section */}
+      <div
+        className="w-100 text-center"
+        style={{
+          background: "rgba(26, 42, 82, 0.1)",
+          borderTop: "1px solid rgba(66, 139, 255, 0.2)",
+          padding: "1rem 0",
+          marginTop: "2rem",
+          backdropFilter: "blur(5px)",
+          position: "relative",
+          zIndex: 2,
+        }}
+      >
+        <div className="container">
+          <p 
+            style={{ 
+              margin: 0, 
+              color: "#1a2a52", 
+              fontSize: "0.9rem",
+              fontWeight: "500",
+            }}
+          >
+            © Copyright 2025 Techstiq Infotech
+          </p>
         </div>
       </div>
 

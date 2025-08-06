@@ -81,7 +81,7 @@ function AboutUsPage() {
 
   const themeColor = '#0072D9';
 
-  // TechStiq Services Data
+  // Techstiq Services Data
   const services = [
     { 
       id: 1,
@@ -157,7 +157,7 @@ function AboutUsPage() {
     }
   ];
 
-  // Core Values for TechStiq
+  // Core Values for Techstiq
   const coreValues = [
     { 
       id: 1,
@@ -235,9 +235,9 @@ function AboutUsPage() {
       {/* SEO */}
       <Helmet>
         
-        <title>About Us | TechStiq Solutions – IT Services & Digital Transformation</title>
-        <meta name="description" content="TechStiq Solutions is a forward-thinking IT services firm driving digital transformation across industries with client-centric approach and deep expertise." />
-        <meta name="keywords" content="TechStiq Solutions, IT services, digital transformation, cybersecurity, cloud solutions, application development" />
+        <title>About Us | Techstiq Solutions – IT Services & Digital Transformation</title>
+        <meta name="description" content="Techstiq Solutions is a forward-thinking IT services firm driving digital transformation across industries with client-centric approach and deep expertise." />
+        <meta name="keywords" content="Techstiq Solutions, IT services, digital transformation, cybersecurity, cloud solutions, application development" />
       </Helmet>
 
       {/* Floating particles background */}
@@ -292,16 +292,18 @@ function AboutUsPage() {
           transition: 'all 0.6s ease-out'
         }}>
         <div className="hero-text" style={{
+          color:'#0070AD',
           flex: 1,
           order: isMobile ? 2 : 1,
           textAlign: isMobile ? 'center' : 'left'
         }}>
           <h1 style={{
-            fontFamily: "'Poppins', sans-serif",
+            
+            fontFamily: "'Lexend Deca', sans-serif",
             fontWeight: 700,
             fontSize: isMobile ? '1.8rem' : '2.5rem',
             marginBottom: '1rem',
-            color: themeColor,
+            color: '#0070AD',
             lineHeight: '1.2',
             minHeight: '3rem'
           }}>
@@ -316,16 +318,16 @@ function AboutUsPage() {
             lineHeight: '1.6',
             animation: visibleSections.has('hero') ? 'slideInLeft 0.8s ease-out 0.3s both' : 'none'
           }}>
-            TechStiq Solutions is a forward-thinking IT services and consulting firm dedicated to driving digital transformation and innovation for businesses across sectors.
+            Techstiq Solutions is a forward-thinking IT services and consulting firm dedicated to driving digital transformation and innovation for businesses across sectors.
           </p>
           <Link to="/" className="cta-button animated-button" style={{
-            background: themeColor,
+            background:' #0070AD',
             color: '#fff',
             padding: isMobile ? '1rem 2rem' : '0.85rem 2.1rem',
             borderRadius: '40px',
             fontWeight: 600,
             textDecoration: 'none',
-            border: `2px solid ${themeColor}`,
+            border: `2px solid #0070AD`,
             fontSize: isMobile ? '1.06rem' : '1rem',
             display: 'inline-flex',
             alignItems: 'center',
@@ -349,38 +351,7 @@ function AboutUsPage() {
           </Link>
         </div>
 
-        {/* TechStiq Logo Area */}
-        {/* <div className="hero-visual" style={{
-          flex: 1,
-          minWidth: isMobile ? '100%' : '340px',
-          height: isMobile ? 'auto' : '340px',
-          borderRadius: '18px',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          background: 'linear-gradient(105deg, #e6f1fc 40%, #f6fafd 100%)',
-          position: 'relative',
-          overflow: 'hidden'
-        }}>
-          <div className="logo-placeholder" style={{
-            width: '220px',
-            height: '220px',
-            background: `linear-gradient(45deg, ${themeColor}, #4facfe)`,
-            borderRadius: '20px',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-            color: 'white',
-            fontSize: '2.5rem',
-            fontWeight: 'bold',
-            animation: visibleSections.has('hero') ? 'pulse 2s infinite, rotateIn 1s ease-out' : 'none',
-            boxShadow: '0 15px 40px rgba(0,114,217,0.3)'
-          }}>
-            <div>TS</div>
-            <div style={{ fontSize: '0.8rem', fontWeight: 'normal', marginTop: '0.5rem' }}>TechStiq</div>
-          </div>
-        </div> */}
+        
       </section>
 
       {/* Animated Statistics */}
@@ -388,7 +359,7 @@ function AboutUsPage() {
         ref={el => sectionRefs.current.stats = el}
         id="stats"
         style={{
-          background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+          background: 'linear-gradient(135deg, #0070AD 0%, #0070AD 100%)',
           color: 'white',
           padding: isMobile ? '2rem 1rem' : '3rem 2rem',
           borderRadius: '16px',
@@ -457,7 +428,7 @@ function AboutUsPage() {
             <h2 style={{
               fontFamily: "'Poppins', sans-serif",
               marginBottom: '2rem',
-              color: themeColor,
+              color: '#0070AD',
               fontSize: isMobile ? '2.1rem' : '2.65rem'
             }}>Our Mission</h2>
             
@@ -479,7 +450,7 @@ function AboutUsPage() {
               <span style={{
                 fontSize: isMobile ? '1.5rem' : '2rem',
                 fontWeight: 'bold',
-                color: themeColor,
+                color:'#0070AD',
                 animation: 'fadeInScale 0.5s ease-in-out'
               }}>
                 {values[currentValueIndex]}
@@ -496,7 +467,7 @@ function AboutUsPage() {
               fontSize: isMobile ? '1.06rem' : '1.19rem',
               lineHeight: '1.6'
             }}>
-              At TechStiq, we blend deep domain knowledge with cutting-edge technologies—AI, cloud, IoT, big data analytics—to deliver transformative business solutions. We help organizations modernize, optimize, and stay resilient in today's fast-paced tech environment.
+              At Techstiq, we blend deep domain knowledge with cutting-edge technologies—AI, cloud, IoT, big data analytics—to deliver transformative business solutions. We help organizations modernize, optimize, and stay resilient in today's fast-paced tech environment.
             </p>
           </div>
         </div>
@@ -571,7 +542,7 @@ function AboutUsPage() {
                 
                 <div style={{ flex: 1 }}>
                   <h3 style={{
-                    fontFamily: "'Poppins', sans-serif",
+                    fontFamily: "'Lexend Deca', sans-serif",
                     color: themeColor,
                     fontSize: isMobile ? '1.13rem' : '1.23rem',
                     marginBottom: '0.5rem'
@@ -613,7 +584,8 @@ function AboutUsPage() {
           margin: '3rem 0',
           opacity: visibleSections.has('values') ? 1 : 0,
           transform: visibleSections.has('values') ? 'translateY(0)' : 'translateY(50px)',
-          transition: 'all 0.6s ease-out'
+          transition: 'all 0.6s ease-out',
+        
         }}>
         <h2 style={{
           fontFamily: "'Poppins', sans-serif",
@@ -622,7 +594,7 @@ function AboutUsPage() {
           fontSize: isMobile ? '2rem' : '2.2rem',
           textAlign: 'center',
           animation: visibleSections.has('values') ? 'slideInDown 0.6s ease-out' : 'none'
-        }}>Why Choose TechStiq?</h2>
+        }}>Why Choose Techstiq?</h2>
         
         <div className="values-grid" style={{
           display: 'grid',
@@ -761,7 +733,7 @@ function AboutUsPage() {
         id="cta"
         className="footer-cta" 
         style={{
-          background: 'linear-gradient(135deg, #0072D9, #4facfe)',
+          background: 'linear-gradient(135deg, #0070AD, #0070AD)',
           color: '#fff',
           padding: isMobile ? '3rem 1rem' : '4rem 2rem',
           borderRadius: '20px',
@@ -787,7 +759,7 @@ function AboutUsPage() {
             opacity: 0.9,
             animation: visibleSections.has('cta') ? 'fadeInUp 0.8s ease-out 0.5s both' : 'none'
           }}>
-            Partner with TechStiq Solutions for comprehensive IT services and digital innovation that drives results.
+            Partner with Techstiq Solutions for comprehensive IT services and digital innovation that drives results.
           </p>
           
           <Link to="/Contact-Us" className="cta-button-final" style={{
@@ -806,7 +778,7 @@ function AboutUsPage() {
             boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
             animation: visibleSections.has('cta') ? 'pulse 2s infinite, bounceIn 0.8s ease-out 0.7s both' : 'none'
           }}>
-            <span style={{ position: 'relative', zIndex: 2 }}>
+            <span style={{ position: 'relative', zIndex: 2 ,color:'#0070AD'}}>
               Get Started Today
             </span>
           </Link>

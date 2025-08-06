@@ -72,7 +72,7 @@ function App() {
             width: "50px",
             height: "50px",
             borderRadius: "50%",
-            background: "linear-gradient(135deg, #428bff 0%, #1a61ff 100%)",
+            background: "linear-gradient(135deg, #0070AD 0%, #0070AD 100%)",
             border: "none",
             color: "#ffffff",
             fontSize: "1.2rem",
